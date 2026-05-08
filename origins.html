@@ -45,160 +45,150 @@
 
       <p class="text-sm text-slate-400 mb-6 leading-relaxed">A task exists because <em>something needs to happen</em>. There are five buckets of "why" — every task we ever create maps to one or more of them.</p>
 
-      <div class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         <!-- Client-driven -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">3.1 Client-driven</h3>
-          <p class="text-sm text-slate-400 mb-4">The client tells us — explicitly or implicitly — that they need or want something.</p>
-          <div class="space-y-3">
-            <div class="border-l-2 border-blue-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Direct booking request (explicit, transactional)</div>
-              <p class="text-xs text-slate-400">"We need a 4-night stay at the Aman Tokyo for our anniversary, last week of October — suite with city view." → open a search task and map results onto trip components.</p>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">3.1</span>
+            <h3 class="text-base font-semibold text-slate-100">Client-driven</h3>
+          </div>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">The client tells us — explicitly or implicitly — that they need or want something.</p>
+          <div class="space-y-2.5 mb-4">
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Direct booking request</span> (explicit, transactional): <em>"We need a 4-night stay at the Aman Tokyo for our anniversary, last week of October — suite with city view."</em> → open a search task and map results onto trip components.
             </div>
-            <div class="border-l-2 border-blue-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Mid-trip emergency (explicit, urgent)</div>
-              <p class="text-xs text-slate-400">Client lands in Mumbai and the pre-arranged driver isn't there → re-dispatch transport + send an apologetic gesture from the TA.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Mid-trip emergency</span> (explicit, urgent): Client lands in Mumbai and the pre-arranged driver isn't there → re-dispatch transport + send an apologetic gesture from the TA.
             </div>
-            <div class="border-l-2 border-blue-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Vague taste signal (implicit, preference)</div>
-              <p class="text-xs text-slate-400">On a past trip the client said "the Lutetia was way too modern for us" → save preference: avoid contemporary properties; surface on next planning cycle.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Vague taste signal</span> (implicit, preference): On a past trip the client said <em>"the Lutetia was way too modern for us"</em> → save preference: avoid contemporary properties; surface on next planning cycle.
             </div>
-            <div class="border-l-2 border-blue-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Health / dietary signal (implicit, context)</div>
-              <p class="text-xs text-slate-400">Client mentions in passing "I've been doing keto since January" → update CRM dietary; brief all upcoming restaurant bookings.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Health / dietary signal</span> (implicit, context): Client mentions in passing <em>"I've been doing keto since January"</em> → update CRM dietary; brief all upcoming restaurant bookings.
             </div>
-            <div class="border-l-2 border-blue-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Future-trip seed (explicit, low priority)</div>
-              <p class="text-xs text-slate-400">"We're thinking about Patagonia for our 25th anniversary in 2027." → create a soft trip + tickle file for outreach in late 2026.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Future-trip seed</span> (explicit, low priority): <em>"We're thinking about Patagonia for our 25th anniversary in 2027."</em> → create a soft trip + tickle file for outreach in late 2026.
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800">
-            <div class="text-xs text-slate-500"><strong>Typical owner:</strong> TA for relationship-critical responses; ops for transactional execution.</div>
+          <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
+            <span class="font-semibold text-slate-400">Typical owner:</span> TA for relationship-critical responses; ops for transactional execution.
           </div>
         </div>
 
         <!-- World-driven -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">3.2 World-driven (external)</h3>
-          <p class="text-sm text-slate-400 mb-4">Something outside our system happens that affects an active or upcoming trip.</p>
-          <div class="space-y-3">
-            <div class="border-l-2 border-green-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Weather disruption</div>
-              <p class="text-xs text-slate-400">Typhoon warning issued for Seoul, client arriving in 48 hrs → alert client, monitor hourly, prepare reroute scenarios.</p>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">3.2</span>
+            <h3 class="text-base font-semibold text-slate-100">World-driven (external)</h3>
+          </div>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">Something outside our system happens that affects an active or upcoming trip.</p>
+          <div class="space-y-2.5 mb-4">
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Weather disruption:</span> Typhoon warning issued for Seoul, client arriving in 48 hrs → alert client, monitor hourly, prepare reroute scenarios.
             </div>
-            <div class="border-l-2 border-green-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Schedule cancellation</div>
-              <p class="text-xs text-slate-400">The airline cancels the client's outbound the day before departure → rebook on a partner carrier, alert client, coordinate fresh ground transfers.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Schedule cancellation:</span> The airline cancels the client's outbound the day before departure → rebook on a partner carrier, alert client, coordinate fresh ground transfers.
             </div>
-            <div class="border-l-2 border-green-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Vendor-side change</div>
-              <p class="text-xs text-slate-400">Four Seasons George V notifies that the suite category the client booked is closed for renovation → inform client and offer alternatives within their preference profile.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Vendor-side change:</span> Four Seasons George V notifies that the suite category the client booked is closed for renovation → inform client and offer alternatives within their preference profile.
             </div>
-            <div class="border-l-2 border-green-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Award space opens</div>
-              <p class="text-xs text-slate-400">First-class award appears on the client's saved LAX-SYD August dates → book within minutes before it disappears, then notify.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Award space opens:</span> First-class award appears on the client's saved LAX-SYD August dates → book within minutes before it disappears, then notify.
             </div>
-            <div class="border-l-2 border-green-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Compliance advisory</div>
-              <p class="text-xs text-slate-400">State Dept upgrades a destination to Level 3 a week before departure → brief client on safety considerations, offer no-penalty cancellation, document the conversation for audit.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Compliance advisory:</span> State Dept upgrades a destination to Level 3 a week before departure → brief client on safety considerations, offer no-penalty cancellation, document the conversation for audit.
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800">
-            <div class="text-xs text-slate-500"><strong>Typical owner:</strong> AI for detection and templated alerts; human for client-facing communication and re-booking decisions.</div>
+          <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
+            <span class="font-semibold text-slate-400">Typical owner:</span> AI for detection and templated alerts; human for client-facing communication and re-booking decisions.
           </div>
         </div>
 
         <!-- Trip lifecycle -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">3.3 Trip lifecycle</h3>
-          <p class="text-sm text-slate-400 mb-4">The trip itself, as it moves through our pipeline or its calendar, generates work.</p>
-          <div class="space-y-3">
-            <div class="border-l-2 border-amber-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Pre-arrival window (T-10 days)</div>
-              <p class="text-xs text-slate-400">Trip enters its final pre-departure week → spawn pre-arrival checklist (re-confirm transfers, brief restaurants on dietary notes, send weather + packing notes).</p>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">3.3</span>
+            <h3 class="text-base font-semibold text-slate-100">Trip lifecycle</h3>
+          </div>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">The trip itself, as it moves through our pipeline or its calendar, generates work.</p>
+          <div class="space-y-2.5 mb-4">
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Pre-arrival window (T-10 days):</span> Trip enters its final pre-departure week → spawn pre-arrival checklist (re-confirm transfers, brief restaurants on dietary notes, send weather + packing notes).
             </div>
-            <div class="border-l-2 border-amber-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Day-of-departure send-off (T-4 hours)</div>
-              <p class="text-xs text-slate-400">Trip is hours from wheels-up → send "have a wonderful trip" message with confirmation links and the 24/7 emergency contact.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Day-of-departure send-off (T-4 hours):</span> Trip is hours from wheels-up → send "have a wonderful trip" message with confirmation links and the 24/7 emergency contact.
             </div>
-            <div class="border-l-2 border-amber-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Day-1 check-in (T+24 hours after arrival)</div>
-              <p class="text-xs text-slate-400">First night complete → automated "How's the room? Anything we should fix?" — catches issues early before they fester.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Day-1 check-in (T+24 hours after arrival):</span> First night complete → automated "How's the room? Anything we should fix?" — catches issues early before they fester.
             </div>
-            <div class="border-l-2 border-amber-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Post-trip review (T+2 days)</div>
-              <p class="text-xs text-slate-400">Trip flips to complete → personalised follow-up email, feedback request, and capture any new preferences observed during the trip.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Post-trip review (T+2 days):</span> Trip flips to complete → personalised follow-up email, feedback request, and capture any new preferences observed during the trip.
             </div>
-            <div class="border-l-2 border-amber-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Pipeline stall detection</div>
-              <p class="text-xs text-slate-400">Trip sits in <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Booking</code> stage > 5 days with no component changes → flag to ops manager, "what's blocking?"</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Pipeline stall detection:</span> Trip sits in <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Booking</code> stage > 5 days with no component changes → flag to ops manager, "what's blocking?"
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800">
-            <div class="text-xs text-slate-500"><strong>Typical owner:</strong> ops for procedural work; AI for templated communications and scheduled checks.</div>
+          <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
+            <span class="font-semibold text-slate-400">Typical owner:</span> ops for procedural work; AI for templated communications and scheduled checks.
           </div>
         </div>
 
         <!-- Relationship -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">3.4 Relationship</h3>
-          <p class="text-sm text-slate-400 mb-4">Pure relationship-layer moments, sourced from CRM or accumulated context, surfaced by date or pattern.</p>
-          <div class="space-y-3">
-            <div class="border-l-2 border-purple-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Birthday outreach (T-7 days)</div>
-              <p class="text-xs text-slate-400">Client's birthday in a week → TA hand-crafts a card or gift, ideally tied to a property or preference they love.</p>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">3.4</span>
+            <h3 class="text-base font-semibold text-slate-100">Relationship</h3>
+          </div>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">Pure relationship-layer moments, sourced from CRM or accumulated context, surfaced by date or pattern.</p>
+          <div class="space-y-2.5 mb-4">
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Birthday outreach (T-7 days):</span> Client's birthday in a week → TA hand-crafts a card or gift, ideally tied to a property or preference they love.
             </div>
-            <div class="border-l-2 border-purple-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Anniversary trip seed</div>
-              <p class="text-xs text-slate-400">Couple's wedding anniversary visible in CRM → propose a destination drawn from their history (e.g. "where they honeymooned 5 years ago") ahead of the next planning cycle.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Anniversary trip seed:</span> Couple's wedding anniversary visible in CRM → propose a destination drawn from their history (e.g. "where they honeymooned 5 years ago") ahead of the next planning cycle.
             </div>
-            <div class="border-l-2 border-purple-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Returning-client gesture (3rd trip)</div>
-              <p class="text-xs text-slate-400">Client books their 3rd trip with us → trigger a personalised welcome amenity request at the destination property, charged to the relationship.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Returning-client gesture (3rd trip):</span> Client books their 3rd trip with us → trigger a personalised welcome amenity request at the destination property, charged to the relationship.
             </div>
-            <div class="border-l-2 border-purple-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Care-context check-in</div>
-              <p class="text-xs text-slate-400">Client mentioned a parent's chemo on a past trip → 6 weeks later, a gentle "thinking of you" message <em>before</em> any commercial outreach lands.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Care-context check-in:</span> Client mentioned a parent's chemo on a past trip → 6 weeks later, a gentle "thinking of you" message <em>before</em> any commercial outreach lands.
             </div>
-            <div class="border-l-2 border-purple-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Referral acknowledgement</div>
-              <p class="text-xs text-slate-400">Existing client's friend signs up via referral → thank-you message to the referrer, and a flag to mention the new client's first trip on the next monthly check-in.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Referral acknowledgement:</span> Existing client's friend signs up via referral → thank-you message to the referrer, and a flag to mention the new client's first trip on the next monthly check-in.
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800">
-            <div class="text-xs text-slate-500"><strong>Typical owner:</strong> TA — human voice irreplaceable here. Automation tolerance is near zero; this is the bucket where a wrong AI message destroys trust.</div>
+          <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
+            <span class="font-semibold text-slate-400">Typical owner:</span> TA — human voice irreplaceable here. Automation tolerance is near zero; this is the bucket where a wrong AI message destroys trust.
           </div>
         </div>
 
         <!-- Internal operations -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">3.5 Internal operations</h3>
-          <p class="text-sm text-slate-400 mb-4">Our own workflow signals — surfaced by self-monitoring rather than external events.</p>
-          <div class="space-y-3">
-            <div class="border-l-2 border-red-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Coverage gap</div>
-              <p class="text-xs text-slate-400">TA going on 2-week leave → reassign their 8 active trips, brief covering TAs, set OOO auto-replies on relevant channels.</p>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">3.5</span>
+            <h3 class="text-base font-semibold text-slate-100">Internal operations</h3>
+          </div>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">Our own workflow signals — surfaced by self-monitoring rather than external events.</p>
+          <div class="space-y-2.5 mb-4">
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Coverage gap:</span> TA going on 2-week leave → reassign their 8 active trips, brief covering TAs, set OOO auto-replies on relevant channels.
             </div>
-            <div class="border-l-2 border-red-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Shift handoff prep</div>
-              <p class="text-xs text-slate-400">APAC shift end → generate end-of-shift summary with open issues + watch list for the EMEA shift starting in 2 hours.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Shift handoff prep:</span> APAC shift end → generate end-of-shift summary with open issues + watch list for the EMEA shift starting in 2 hours.
             </div>
-            <div class="border-l-2 border-red-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">CRM hygiene gap</div>
-              <p class="text-xs text-slate-400">Trip closed last week with a new preference observed in chat ("hates spicy food") but never logged → reminder to update the CRM before the trip file is considered done.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">CRM hygiene gap:</span> Trip closed last week with a new preference observed in chat ("hates spicy food") but never logged → reminder to update the CRM before the trip file is considered done.
             </div>
-            <div class="border-l-2 border-red-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">SLA breach forming</div>
-              <p class="text-xs text-slate-400">VVIP client's message unanswered > 90 min → escalate to ops manager and the assigned TA in parallel.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">SLA breach forming:</span> VVIP client's message unanswered > 90 min → escalate to ops manager and the assigned TA in parallel.
             </div>
-            <div class="border-l-2 border-red-500 pl-4 py-2">
-              <div class="text-sm font-medium text-slate-200 mb-1">Workload imbalance</div>
-              <p class="text-xs text-slate-400">TA A has 12 active trips, TA B has 5 → recommend the next incoming request to TA B; flag if A is consistently above capacity week-over-week.</p>
+            <div class="text-xs text-slate-300">
+              <span class="font-semibold text-slate-200">Workload imbalance:</span> TA A has 12 active trips, TA B has 5 → recommend the next incoming request to TA B; flag if A is consistently above capacity week-over-week.
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800">
-            <div class="text-xs text-slate-500"><strong>Typical owner:</strong> ops manager for escalations; high automation tolerance for the rest — this is self-driving territory.</div>
+          <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
+            <span class="font-semibold text-slate-400">Typical owner:</span> ops manager for escalations; high automation tolerance for the rest — this is self-driving territory.
           </div>
         </div>
 

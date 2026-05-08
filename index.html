@@ -51,29 +51,8 @@
         <p class="text-sm text-slate-500 mt-1">Conductor Task Creation & Management — v0.1 draft</p>
       </div>
 
-      <!-- Problem statement -->
-      <div class="bg-slate-900 border border-slate-800 rounded-lg p-6 mb-8">
-        <h3 class="text-base font-semibold text-slate-100 mb-4">Problem Statement</h3>
-        <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
-          <p>Maestro's business model rests on a simple split: <strong class="text-slate-100">the customer just wants the perfect trip; the business needs that perfect trip to be delivered correctly <em>and cheaply</em>.</strong></p>
-
-          <p>Planning a trip isn't the hard part — anyone can do that. The hard part is the long tail of small jobs behind a perfect trip. Each is small. There are dozens per trip. Across a portfolio, thousands.</p>
-
-          <p>"Cheaply" means <strong class="text-slate-100">AI does the work where it can; humans do it where AI can't.</strong> Both kinds of work need to live in one system so the team never loses track of what's happening, who (or what) is doing it, and whether it's done.</p>
-
-          <p>The job of Conductor's task layer is therefore three things:</p>
-          <ul class="list-disc list-inside space-y-1 ml-4">
-            <li><strong class="text-slate-100">Detect</strong> — see every task that needs to happen, across human-judgment moments and ambient system signals</li>
-            <li><strong class="text-slate-100">Route</strong> — send each task to the cheapest competent worker (AI or human)</li>
-            <li><strong class="text-slate-100">Close</strong> — confirm completion confidently, auto-close where the system can prove it's done, manual where it can't</li>
-          </ul>
-
-          <p>If we get this right, a single travel advisor can run the trip volume that today takes a small ops team. If we get it wrong, the AI either drowns the team in noise or misses the moments that matter. Both kill the unit economics.</p>
-        </div>
-      </div>
-
       <!-- Stat cards (clickable -> related page) -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
         <a href="origins.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
           <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">5</div>
           <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">Origin Buckets</div>
@@ -96,24 +75,68 @@
         </a>
       </div>
 
-      <!-- Reference patterns -->
-      <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-        <h3 class="text-base font-semibold text-slate-100 mb-4">Reference Patterns</h3>
-        <p class="text-sm text-slate-400 mb-4">External products with shipped patterns we can borrow from. Linked here so the alignment meeting has a shared visual vocabulary.</p>
-        <div class="space-y-3">
-          <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
-            <div class="text-sm font-medium text-slate-200 mb-2">Claude Desktop scheduled tasks</div>
-            <p class="text-xs text-slate-400 leading-relaxed">Conversational creation ("set up a daily X"), proactive firing with desktop notification, dedicated <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Scheduled</code> section in sidebar, view/edit/disable from same UI. A widely-cited pattern for proactive task surfacing — useful reference for World-driven and Trip lifecycle origins, and for proactive closure suggestions.</p>
+      <!-- 2-column layout: Problem + Jobs (left) / Three Jobs cards (right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
+
+        <!-- LEFT COLUMN (60%, span-3) -->
+        <div class="lg:col-span-3 space-y-6">
+
+          <!-- Problem statement -->
+          <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+            <h3 class="text-base font-semibold text-slate-100 mb-4">Problem Statement</h3>
+            <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+              <p>Maestro's business model rests on a simple split: <strong class="text-slate-100">the customer just wants the perfect trip; the business needs that perfect trip to be delivered correctly <em>and cheaply</em>.</strong></p>
+
+              <p>Planning a trip isn't the hard part — anyone can do that. The hard part is the long tail of small jobs behind a perfect trip. Each is small. There are dozens per trip. Across a portfolio, thousands.</p>
+
+              <p>"Cheaply" means <strong class="text-slate-100">AI does the work where it can; humans do it where AI can't.</strong> Both kinds of work need to live in one system so the team never loses track of what's happening, who (or what) is doing it, and whether it's done.</p>
+
+              <p>If we get this right, a single travel advisor can run the trip volume that today takes a small ops team. If we get it wrong, the AI either drowns the team in noise or misses the moments that matter. Both kill the unit economics.</p>
+            </div>
           </div>
-          <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
-            <div class="text-sm font-medium text-slate-200 mb-2">Front Copilot</div>
-            <p class="text-xs text-slate-400 leading-relaxed">Context-aware reply suggestions with source transparency (which past conversations / knowledge base entries informed the suggestion). Useful reference for in-chat AI suggestions — particularly the source-citation pattern, which builds operator trust.</p>
+
+          <!-- Reference patterns -->
+          <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+            <h3 class="text-base font-semibold text-slate-100 mb-4">Reference Patterns</h3>
+            <p class="text-sm text-slate-400 mb-4">External products with shipped patterns we can borrow from. Linked here so the alignment meeting has a shared visual vocabulary.</p>
+            <div class="space-y-3">
+              <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
+                <div class="text-sm font-medium text-slate-200 mb-2">Claude Desktop scheduled tasks</div>
+                <p class="text-xs text-slate-400 leading-relaxed">Conversational creation ("set up a daily X"), proactive firing with desktop notification, dedicated <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Scheduled</code> section in sidebar, view/edit/disable from same UI. A widely-cited pattern for proactive task surfacing — useful reference for World-driven and Trip lifecycle origins, and for proactive closure suggestions.</p>
+              </div>
+              <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
+                <div class="text-sm font-medium text-slate-200 mb-2">Front Copilot</div>
+                <p class="text-xs text-slate-400 leading-relaxed">Context-aware reply suggestions with source transparency (which past conversations / knowledge base entries informed the suggestion). Useful reference for in-chat AI suggestions — particularly the source-citation pattern, which builds operator trust.</p>
+              </div>
+              <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
+                <div class="text-sm font-medium text-slate-200 mb-2">Superhuman Instant Reply</div>
+                <p class="text-xs text-slate-400 leading-relaxed">Inline reply variations generated as you read; multiple variations to pick from, send with one click. Useful reference for the lightweight UX of an inline suggestion that doesn't break flow.</p>
+              </div>
+            </div>
           </div>
-          <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
-            <div class="text-sm font-medium text-slate-200 mb-2">Superhuman Instant Reply</div>
-            <p class="text-xs text-slate-400 leading-relaxed">Inline reply variations generated as you read; multiple variations to pick from, send with one click. Useful reference for the lightweight UX of an inline suggestion that doesn't break flow.</p>
+
+        </div>
+
+        <!-- RIGHT COLUMN (40%, span-2) -->
+        <div class="lg:col-span-2 space-y-3">
+          <h3 class="text-base font-semibold text-slate-100 mb-2">Three Jobs of the Task Layer</h3>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+            <div class="font-semibold text-slate-100 mb-1">Detect</div>
+            <p class="text-xs text-slate-400 leading-relaxed">See every task that needs to happen, across human-judgment moments and ambient system signals.</p>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+            <div class="font-semibold text-slate-100 mb-1">Route</div>
+            <p class="text-xs text-slate-400 leading-relaxed">Send each task to the cheapest competent worker (AI or human).</p>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+            <div class="font-semibold text-slate-100 mb-1">Close</div>
+            <p class="text-xs text-slate-400 leading-relaxed">Confirm completion confidently, auto-close where the system can prove it's done, manual where it can't.</p>
           </div>
         </div>
+
       </div>
 
     </div>

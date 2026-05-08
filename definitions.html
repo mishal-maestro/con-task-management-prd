@@ -43,65 +43,68 @@
         <p class="text-sm text-slate-500 mt-1">Locked vocabulary for the alignment meeting</p>
       </div>
 
-      <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
-        <table class="w-full">
-          <thead>
-            <tr class="bg-slate-800/50 border-b border-slate-800">
-              <th class="text-left px-6 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Term</th>
-              <th class="text-left px-6 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Definition</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-800">
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Task</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">A discrete actionable item that needs to happen for a trip to be delivered correctly. Has an owner (human or AI), a definition of done, and a closeable lifecycle.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Task-shaped intent</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">The signal in a client message, ops conversation, or external event that <em>something needs to be done</em>. Examples: client requests a connecting room; vendor announces a price change; flight delayed by 4 hrs.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Origin</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">The <em>why</em> a task exists — the underlying reason it needs to happen. See §3 for the taxonomy.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Trigger</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">The originating event that <em>might</em> spawn a task. Triggers feed into AI capabilities or are surfaced directly to a human.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">AI task</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">A task whose execution is performed by AI — either fully (auto tier) or with a human approval gate (assist / escalate tiers).</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Human task</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">A task that requires a human (ops associate, TA, supplier-relationship owner) to execute. Typically relationship-critical, judgement-dependent, or phone-based.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Routing tier</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">How the task is handled. <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">auto</code> = AI handles end-to-end. <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">assist</code> = AI proposes, human approves. <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">escalate</code> = immediate human attention required.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">System signal</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">An external event detected by ambient monitoring — weather alert, flight delay, vendor pricing change, advisory level. Distinct from a client message.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Trip context</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">The link between a task and a specific trip, so monitoring signals only fire for active or upcoming trips. A weather alert for Seoul is only a task if a client is travelling to Seoul.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">Listening cadence</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">How often (or how reactively) an AI capability checks for triggers. Per-message, ambient, periodic poll, or daily batch — different per stream.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">WRITE stream</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">A continuous feed of events arriving in our system that <em>may</em> spawn a task. The push side. See §4.</td>
-            </tr>
-            <tr class="hover:bg-slate-800/30 transition-colors">
-              <td class="px-6 py-4 text-sm font-mono text-slate-100 align-top">READ stream</td>
-              <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">A query we run repeatedly against our own data to surface tasks from patterns or absences. The pull side. See §5.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Task</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A discrete actionable item that needs to happen for a trip to be delivered correctly. Has an owner (human or AI), a definition of done, and a closeable lifecycle.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Task-shaped intent</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The signal in a client message, ops conversation, or external event that <em>something needs to be done</em>. Examples: client requests a connecting room; vendor announces a price change; flight delayed by 4 hrs.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Origin</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The <em>why</em> a task exists — the underlying reason it needs to happen. See §3 for the taxonomy.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Trigger</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The originating event that <em>might</em> spawn a task. Triggers feed into AI capabilities or are surfaced directly to a human.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">AI task</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A task whose execution is performed by AI — either fully (auto tier) or with a human approval gate (assist / escalate tiers).</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Human task</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A task that requires a human (ops associate, TA, supplier-relationship owner) to execute. Typically relationship-critical, judgement-dependent, or phone-based.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Routing tier</div>
+          <p class="text-sm text-slate-300 leading-relaxed">How the task is handled. <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">auto</code> = AI handles end-to-end. <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">assist</code> = AI proposes, human approves. <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">escalate</code> = immediate human attention required.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">System signal</div>
+          <p class="text-sm text-slate-300 leading-relaxed">An external event detected by ambient monitoring — weather alert, flight delay, vendor pricing change, advisory level. Distinct from a client message.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Trip context</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The link between a task and a specific trip, so monitoring signals only fire for active or upcoming trips. A weather alert for Seoul is only a task if a client is travelling to Seoul.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Listening cadence</div>
+          <p class="text-sm text-slate-300 leading-relaxed">How often (or how reactively) an AI capability checks for triggers. Per-message, ambient, periodic poll, or daily batch — different per stream.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">WRITE stream</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A continuous feed of events arriving in our system that <em>may</em> spawn a task. The push side. See §4.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">READ stream</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A query we run repeatedly against our own data to surface tasks from patterns or absences. The pull side. See §5.</p>
+        </div>
+
       </div>
 
     </div>
