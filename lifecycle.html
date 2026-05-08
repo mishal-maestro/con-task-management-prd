@@ -47,12 +47,25 @@
         <p class="text-sm text-slate-500 mt-1">How tasks move through the system</p>
       </div>
 
-      <p class="text-sm text-slate-400 mb-6 leading-relaxed">Where §3-§6 covered <em>what tasks are</em> and <em>who does them</em>, this section covers how they move through the system.</p>
+      <p class="text-sm text-slate-400 mb-4 leading-relaxed">Where §3-§6 covered <em>what tasks are</em> and <em>who does them</em>, this section covers how they move through the system.</p>
 
-      <!-- Creation -->
-      <div class="space-y-6 mb-8">
+      <!-- Color legend (matches routing-tier palette) -->
+      <div class="flex flex-wrap gap-4 mb-6 text-xs text-slate-400 bg-slate-900/40 border border-slate-800 rounded-lg px-4 py-2.5">
+        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-green-500"></span><span>AI / auto-tier</span></div>
+        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span><span>Manual / hybrid (assist-tier)</span></div>
+        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500"></span><span>Dismissal</span></div>
+        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span><span>Descriptive bullets</span></div>
+      </div>
+
+      <!-- 3-column grid: Creation / Management / Closure -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+
+        <!-- 7.1 Creation -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">7.1 Creation</h3>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">7.1</span>
+            <h3 class="text-base font-semibold text-slate-100">Creation</h3>
+          </div>
           <p class="text-sm text-slate-400 mb-4">A task enters the system in one of three ways:</p>
           <div class="space-y-3">
             <div class="flex gap-3">
@@ -70,7 +83,7 @@
               </div>
             </div>
             <div class="flex gap-3">
-              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-blue-500"></div>
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-amber-500"></div>
               <div>
                 <div class="text-sm font-medium text-slate-200 mb-1">Hybrid (AI proposes)</div>
                 <p class="text-xs text-slate-400 leading-relaxed">An AI capability detects a trigger, confidence is below the auto threshold, the task is created in a "needs review" state. A human approves, edits, or rejects before it moves into execution.</p>
@@ -79,26 +92,32 @@
           </div>
         </div>
 
-        <!-- Management -->
+        <!-- 7.2 Management -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">7.2 Management</h3>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">7.2</span>
+            <h3 class="text-base font-semibold text-slate-100">Management</h3>
+          </div>
           <p class="text-sm text-slate-400 mb-4">Once created, tasks live in a single dashboard:</p>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li class="flex gap-2"><span class="text-blue-500">•</span> One filterable list across all clients — AI tasks and human tasks share the same surface, distinguished by routing tier badge rather than by separation</li>
-            <li class="flex gap-2"><span class="text-blue-500">•</span> Filters: status, priority, origin bucket, routing tier, owner, source</li>
-            <li class="flex gap-2"><span class="text-blue-500">•</span> Default views per role (open question — see §8: TA dashboard ≠ ops dashboard)</li>
-            <li class="flex gap-2"><span class="text-blue-500">•</span> Bulk operations: assign, reassign, complete, dismiss</li>
-            <li class="flex gap-2"><span class="text-blue-500">•</span> Inline AI assistant accepts natural-language queries: "show me overdue", "what should I work on first", "give me an end-of-day summary"</li>
+          <ul class="space-y-2.5 text-xs text-slate-400">
+            <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">•</span> One filterable list across all clients — AI tasks and human tasks share the same surface, distinguished by routing tier badge rather than by separation</li>
+            <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">•</span> Filters: status, priority, origin bucket, routing tier, owner, source</li>
+            <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">•</span> Default views per role (open question — see §8: TA dashboard ≠ ops dashboard)</li>
+            <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">•</span> Bulk operations: assign, reassign, complete, dismiss</li>
+            <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">•</span> Inline AI assistant accepts natural-language queries: "show me overdue", "what should I work on first", "give me an end-of-day summary"</li>
           </ul>
         </div>
 
-        <!-- Closure -->
+        <!-- 7.3 Closure -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
-          <h3 class="text-base font-semibold text-slate-100 mb-3">7.3 Closure</h3>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-xs uppercase tracking-wider text-orange-500">7.3</span>
+            <h3 class="text-base font-semibold text-slate-100">Closure</h3>
+          </div>
           <p class="text-sm text-slate-400 mb-4">A task leaves the system in one of four ways:</p>
           <div class="space-y-3">
             <div class="flex gap-3">
-              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-green-500"></div>
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-amber-500"></div>
               <div>
                 <div class="text-sm font-medium text-slate-200 mb-1">Manual completion</div>
                 <p class="text-xs text-slate-400 leading-relaxed">A human marks it done. Always available, lowest trust bar.</p>
@@ -126,10 +145,13 @@
               </div>
             </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800">
-            <p class="text-xs text-slate-400">Every state change writes to an activity log. Reopening is supported. For high-stakes tasks (VVIP, large bookings) we may need a "soft-closed" intermediate state — see §8.</p>
-          </div>
         </div>
+
+      </div>
+
+      <!-- Activity log annotation, full-width below the 3 cards -->
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 mb-8">
+        <p class="text-xs text-slate-400"><strong class="text-slate-200">Audit:</strong> Every state change writes to an activity log. Reopening is supported. For high-stakes tasks (VVIP, large bookings) we may need a "soft-closed" intermediate state — see §8.</p>
       </div>
 
       <!-- Lifecycle BPMN -->
