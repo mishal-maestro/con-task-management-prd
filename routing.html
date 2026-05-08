@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Routing Logic — Conductor Task Management</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="theme.js"></script>
+  <script src="data.js"></script>
+  <script>window.CURRENT_PAGE = 'routing';</script>
+  <script src="nav.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-300 font-sans min-h-screen antialiased">
+
+  <div id="nav-root"></div>
+
+  <main class="ml-0 lg:ml-[260px] min-h-screen">
+    <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
+
+      <div class="mb-6">
+        <a href="https://www.notion.so/359d1ecb21898155814bd4ba6597645b" target="_blank"
+           class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Notion PRD (source of truth)
+        </a>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Routing Logic</h2>
+        <p class="text-sm text-slate-500 mt-1">Who does the work — AI or human?</p>
+      </div>
+
+      <p class="text-sm text-slate-400 mb-6 leading-relaxed">Routing is the leverage decision. Same task can be <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">auto</code>, <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">assist</code>, or <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">escalate</code> depending on cost-of-error and competence boundary.</p>
+
+      <!-- The three tiers -->
+      <div class="space-y-6 mb-8">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-base font-semibold text-slate-100 mb-3">6.1 The three tiers</h3>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-16 h-16 rounded-lg bg-green-500/10 border border-green-500/30 flex items-center justify-center">
+                <span class="font-mono text-sm font-bold text-green-400">auto</span>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Auto</div>
+                <p class="text-xs text-slate-400 leading-relaxed">AI handles the task end-to-end. No human gate after creation. Use when: task is mechanical, has structured inputs, has a known correct answer, and cost of error is low.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-16 h-16 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
+                <span class="font-mono text-sm font-bold text-amber-400">assist</span>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Assist</div>
+                <p class="text-xs text-slate-400 leading-relaxed">AI proposes the action; a human reviews and approves before execution. Use when: task has ambiguity, decision affects client perception, has financial commitment, or touches relationship trust.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-16 h-16 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center">
+                <span class="font-mono text-sm font-bold text-red-400">escalate</span>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Escalate</div>
+                <p class="text-xs text-slate-400 leading-relaxed">Immediate human attention required. Use when: time-sensitive, high-stakes (VVIP / >$X booking / safety), or AI confidence below a threshold.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Where AI is competent -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-base font-semibold text-slate-100 mb-3">6.2 Where AI is competent (rule of thumb)</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex gap-2"><span class="text-green-500">•</span> Detection of known patterns (deal thresholds, expiring documents, departing trips)</li>
+            <li class="flex gap-2"><span class="text-green-500">•</span> Drafting templated communications (confirmations, polite follow-ups, reminders)</li>
+            <li class="flex gap-2"><span class="text-green-500">•</span> Mechanical lookups (find a hotel rate, check award availability)</li>
+            <li class="flex gap-2"><span class="text-green-500">•</span> Status updates (mark a task done when a confirmation arrives)</li>
+            <li class="flex gap-2"><span class="text-green-500">•</span> Pattern matching against historical context (a similar issue happened before; here's how we handled it)</li>
+          </ul>
+        </div>
+
+        <!-- Where humans are essential -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-base font-semibold text-slate-100 mb-3">6.3 Where humans are essential</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex gap-2"><span class="text-red-500">•</span> Phone calls to suppliers — especially relationship-leverage moments (asking for an upgrade, securing a sold-out room)</li>
+            <li class="flex gap-2"><span class="text-red-500">•</span> Client-facing communication during conflict, complaint, disappointment, or loss</li>
+            <li class="flex gap-2"><span class="text-red-500">•</span> Financial decisions: committing > $X without explicit client approval</li>
+            <li class="flex gap-2"><span class="text-red-500">•</span> Relationship moments — birthdays, anniversaries, condolences. The TA's voice matters; the AI's doesn't.</li>
+            <li class="flex gap-2"><span class="text-red-500">•</span> Judgment calls where two valid options exist and the answer depends on the client's taste</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Default routing matrix -->
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-6 mb-8">
+        <h3 class="text-base font-semibold text-slate-100 mb-3">6.4 Suggested default routing per origin bucket</h3>
+        <p class="text-xs text-slate-400 mb-4">A starting point for the alignment meeting — not locked. Expect pushback on several of these.</p>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-slate-800">
+                <th class="text-left px-4 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Origin bucket</th>
+                <th class="text-left px-4 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Suggested default</th>
+                <th class="text-left px-4 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Rationale</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">Client-driven (explicit)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30">Assist</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">AI drafts the response; human approves the tone</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">Client-driven (implicit)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30">Assist</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">Misreading the client is expensive; human nuance needed</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">World-driven (compliance)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-green-500/10 text-green-400 border border-green-500/30">Auto</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">Mechanical detection, mechanical reminder</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">World-driven (disruption)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/30">Escalate</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">Time-sensitive, client-facing, often a relationship moment</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">World-driven (vendor change)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30">Assist</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">Auto detect → Assist action. Detection is mechanical; the response (re-shop, re-quote) needs judgement</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">World-driven (loyalty)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30">Assist</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">Auto detect → Assist action. Detection auto; booking commitment human</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">Trip lifecycle (templated prep)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-green-500/10 text-green-400 border border-green-500/30">Auto</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">Pre-arrival checklists are routine</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">Trip lifecycle (client comms)</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30">Assist</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">TA voice on every client-facing send</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">Relationship</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/30">Escalate</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">The whole point is the human voice</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-sm text-slate-200">Internal ops</td>
+                <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs font-mono bg-green-500/10 text-green-400 border border-green-500/30">Auto</span></td>
+                <td class="px-4 py-3 text-xs text-slate-400">Self-monitoring is automation territory</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

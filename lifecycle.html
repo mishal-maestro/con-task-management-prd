@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifecycle — Conductor Task Management</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bpmn.css">
+
+  <script src="theme.js"></script>
+  <script src="data.js"></script>
+  <script>window.CURRENT_PAGE = 'lifecycle';</script>
+  <script src="nav.js"></script>
+  <script src="bpmn-shape-info.js"></script>
+  <script src="bpmn-popover.js"></script>
+  <script src="bpmn-connections.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-300 font-sans min-h-screen antialiased">
+
+  <div id="nav-root"></div>
+
+  <main class="ml-0 lg:ml-[260px] min-h-screen">
+    <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
+
+      <div class="mb-6">
+        <a href="https://www.notion.so/359d1ecb21898155814bd4ba6597645b" target="_blank"
+           class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Notion PRD (source of truth)
+        </a>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Task Lifecycle</h2>
+        <p class="text-sm text-slate-500 mt-1">How tasks move through the system</p>
+      </div>
+
+      <p class="text-sm text-slate-400 mb-6 leading-relaxed">Where §3-§6 covered <em>what tasks are</em> and <em>who does them</em>, this section covers how they move through the system.</p>
+
+      <!-- Creation -->
+      <div class="space-y-6 mb-8">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-base font-semibold text-slate-100 mb-3">7.1 Creation</h3>
+          <p class="text-sm text-slate-400 mb-4">A task enters the system in one of three ways:</p>
+          <div class="space-y-3">
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-amber-500"></div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Manual</div>
+                <p class="text-xs text-slate-400 leading-relaxed">A human creates it directly (clicking on a message, opening a New Task modal). AI may pre-fill fields, but a human is in the driver's seat.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-green-500"></div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Automatic</div>
+                <p class="text-xs text-slate-400 leading-relaxed">An AI capability detects a task-shaped trigger (from a WRITE or READ stream), confidence is above the auto threshold, the task is created and starts executing without a human gate.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-blue-500"></div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Hybrid (AI proposes)</div>
+                <p class="text-xs text-slate-400 leading-relaxed">An AI capability detects a trigger, confidence is below the auto threshold, the task is created in a "needs review" state. A human approves, edits, or rejects before it moves into execution.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Management -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-base font-semibold text-slate-100 mb-3">7.2 Management</h3>
+          <p class="text-sm text-slate-400 mb-4">Once created, tasks live in a single dashboard:</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex gap-2"><span class="text-blue-500">•</span> One filterable list across all clients — AI tasks and human tasks share the same surface, distinguished by routing tier badge rather than by separation</li>
+            <li class="flex gap-2"><span class="text-blue-500">•</span> Filters: status, priority, origin bucket, routing tier, owner, source</li>
+            <li class="flex gap-2"><span class="text-blue-500">•</span> Default views per role (open question — see §8: TA dashboard ≠ ops dashboard)</li>
+            <li class="flex gap-2"><span class="text-blue-500">•</span> Bulk operations: assign, reassign, complete, dismiss</li>
+            <li class="flex gap-2"><span class="text-blue-500">•</span> Inline AI assistant accepts natural-language queries: "show me overdue", "what should I work on first", "give me an end-of-day summary"</li>
+          </ul>
+        </div>
+
+        <!-- Closure -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-base font-semibold text-slate-100 mb-3">7.3 Closure</h3>
+          <p class="text-sm text-slate-400 mb-4">A task leaves the system in one of four ways:</p>
+          <div class="space-y-3">
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-green-500"></div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Manual completion</div>
+                <p class="text-xs text-slate-400 leading-relaxed">A human marks it done. Always available, lowest trust bar.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-green-500"></div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">AI auto-close</div>
+                <p class="text-xs text-slate-400 leading-relaxed">For <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">auto</code>-tier tasks the AI fully executed. The AI knows it's done because it did it.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-amber-500"></div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">AI-proposed close</div>
+                <p class="text-xs text-slate-400 leading-relaxed">AI detects evidence of completion (a confirmation arrived, the conversation moved past the issue) and surfaces a "close this?" prompt for a one-click human ACK.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-red-500"></div>
+              <div>
+                <div class="text-sm font-medium text-slate-200 mb-1">Manual dismissal</div>
+                <p class="text-xs text-slate-400 leading-relaxed">A human closes the task without completion, with a reason captured for audit. Distinct from "completed."</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-800">
+            <p class="text-xs text-slate-400">Every state change writes to an activity log. Reopening is supported. For high-stakes tasks (VVIP, large bookings) we may need a "soft-closed" intermediate state — see §8.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lifecycle BPMN -->
+      <div class="section-title"><span class="num">3</span> Lifecycle BPMN</div>
+
+<div class="pool-scroll">
+<div class="pool" style="min-width:1800px;">
+  <div class="pool-header">TASK LIFECYCLE</div>
+  <div class="pool-content">
+
+    <!-- CREATION: split fan-out → 3 paths converge at intermediate event -->
+    <div class="lane" style="flex:1.4;">
+      <div class="lane-header">Creation</div>
+      <div class="lane-content" style="min-height:420px;">
+        <div class="event-start" id="lc-start" style="position:absolute;left:30px;top:200px;"></div>
+        <div class="gateway parallel" id="lc-fork" style="left:110px;top:200px;">
+          <div class="gw-icon">+</div>
+        </div>
+        <div class="task manual-task" id="lc-manual" style="left:240px;top:60px;">
+          <div class="task-label">Manual</div>
+          <div class="task-sub">Human creates</div>
+        </div>
+        <div class="task service-task" id="lc-auto" style="left:240px;top:200px;">
+          <div class="task-label">Automatic</div>
+          <div class="task-sub">AI auto-create</div>
+        </div>
+        <div class="task user-task" id="lc-hybrid" style="left:240px;top:330px;">
+          <div class="task-label">Hybrid</div>
+          <div class="task-sub">AI propose + ACK</div>
+        </div>
+        <div class="event-intermediate" id="lc-entered" style="position:absolute;left:470px;top:205px;"></div>
+        <div style="position:absolute;left:460px;top:240px;font-size:9px;color:#ff5e32;max-width:90px;text-align:center;">Task entered</div>
+      </div>
+    </div>
+
+    <!-- MANAGEMENT: gate fan-out → 2 execution paths converge at completion check -->
+    <div class="lane" style="flex:1.2;">
+      <div class="lane-header">Management</div>
+      <div class="lane-content" style="min-height:420px;">
+        <div style="position:absolute;left:30px;top:25px;font-size:10px;color:#b0b8c8;">Task active</div>
+        <div class="gateway exclusive" id="lc-exec-gate" style="left:50px;top:200px;">
+          <div class="gw-icon">×</div>
+        </div>
+        <div class="task service-task" id="lc-ai-exec" style="left:170px;top:120px;">
+          <div class="task-label">AI executes</div>
+          <div class="task-sub">Auto tier</div>
+        </div>
+        <div class="task user-task" id="lc-human-exec" style="left:170px;top:280px;">
+          <div class="task-label">Human executes</div>
+          <div class="task-sub">Assist / manual</div>
+        </div>
+        <div class="event-intermediate" id="lc-check" style="position:absolute;left:400px;top:205px;"></div>
+        <div style="position:absolute;left:390px;top:240px;font-size:9px;color:#ff5e32;max-width:100px;text-align:center;">Completion check</div>
+      </div>
+    </div>
+
+    <!-- CLOSURE: gate fan-out → 4 close paths converge at end event -->
+    <div class="lane" style="flex:1.6;">
+      <div class="lane-header">Closure</div>
+      <div class="lane-content" style="min-height:420px;">
+        <div class="gateway exclusive" id="lc-close-gate" style="left:30px;top:200px;">
+          <div class="gw-icon">×</div>
+        </div>
+        <div class="task manual-task" id="lc-manual-complete" style="left:150px;top:30px;">
+          <div class="task-label">Manual complete</div>
+        </div>
+        <div class="task service-task" id="lc-ai-auto-close" style="left:150px;top:140px;">
+          <div class="task-label">AI auto-close</div>
+        </div>
+        <div class="task user-task" id="lc-ai-propose" style="left:150px;top:250px;">
+          <div class="task-label">AI propose + ACK</div>
+        </div>
+        <div class="task manual-task" id="lc-dismiss" style="left:150px;top:360px;">
+          <div class="task-label">Dismiss</div>
+        </div>
+        <div class="event-end" id="lc-end" style="position:absolute;left:380px;top:205px;"></div>
+        <div style="position:absolute;left:420px;top:200px;font-size:10px;color:#ef4444;max-width:90px;">Closed</div>
+      </div>
+    </div>
+
+  </div>
+  <svg id="svg-lifecycle-connections" class="svg-overlay"></svg>
+</div>
+</div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 mt-8">
+        <div class="text-xs text-slate-400">
+          <strong class="text-slate-200">Side annotation:</strong> Activity log records every state change (creation method, routing tier, assignee, status transitions, closure reason). Reopening is supported for audit and recovery.
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-title">BPMN Notation</div>
+        <div class="legend-item"><div class="legend-swatch" style="border-radius:50%;border:2px solid #12B28C;background:#12B28C20;"></div> Start event</div>
+        <div class="legend-item"><div class="legend-swatch" style="border-radius:50%;border:3px solid #ef4444;background:#ef444420;"></div> End event</div>
+        <div class="legend-item"><div class="legend-swatch" style="border-radius:50%;border:2px solid #ff5e32;background:#ff5e3220;"></div> Intermediate event</div>
+        <div class="legend-item"><div class="legend-swatch" style="border-left:3px solid #f59e0b;background:#2a3042;"></div> Manual task (human)</div>
+        <div class="legend-item"><div class="legend-swatch" style="border-left:3px solid #3b82f6;background:#2a3042;"></div> User task (human review)</div>
+        <div class="legend-item"><div class="legend-swatch" style="border-left:3px solid #8b5cf6;background:#2a3042;"></div> Service task (automated)</div>
+        <div class="legend-item"><div class="legend-swatch" style="transform:rotate(45deg);width:12px;height:12px;border:2px solid #f59e0b;background:#f59e0b15;margin:2px;"></div> Exclusive gateway (XOR)</div>
+        <div class="legend-item"><div class="legend-swatch" style="transform:rotate(45deg);width:12px;height:12px;border:2px solid #3b82f6;background:#3b82f615;margin:2px;"></div> Parallel gateway (AND)</div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const pool = document.querySelector('.pool');
+        const svg = document.getElementById('svg-lifecycle-connections');
+        if (!pool || !svg) return;
+        BPMN.prepareSvg(svg, pool);
+
+        // Creation lane
+        BPMN.drawConnection(svg, pool, 'lc-start', 'lc-fork', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-fork', 'lc-manual', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-fork', 'lc-auto', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-fork', 'lc-hybrid', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-manual', 'lc-entered', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-auto', 'lc-entered', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-hybrid', 'lc-entered', 'sequence');
+
+        // Creation -> Management (cross-lane)
+        BPMN.drawConnection(svg, pool, 'lc-entered', 'lc-exec-gate', 'sequence');
+
+        // Management lane
+        BPMN.drawConnection(svg, pool, 'lc-exec-gate', 'lc-ai-exec', 'sequence', 'Auto');
+        BPMN.drawConnection(svg, pool, 'lc-exec-gate', 'lc-human-exec', 'sequence', 'Assist/manual');
+        BPMN.drawConnection(svg, pool, 'lc-ai-exec', 'lc-check', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-human-exec', 'lc-check', 'sequence');
+
+        // Management -> Closure (cross-lane)
+        BPMN.drawConnection(svg, pool, 'lc-check', 'lc-close-gate', 'sequence');
+
+        // Closure lane
+        BPMN.drawConnection(svg, pool, 'lc-close-gate', 'lc-manual-complete', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-close-gate', 'lc-ai-auto-close', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-close-gate', 'lc-ai-propose', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-close-gate', 'lc-dismiss', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-manual-complete', 'lc-end', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-ai-auto-close', 'lc-end', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-ai-propose', 'lc-end', 'sequence');
+        BPMN.drawConnection(svg, pool, 'lc-dismiss', 'lc-end', 'sequence');
+      }, 100);
+    });
+  </script>
+
+</body>
+</html>

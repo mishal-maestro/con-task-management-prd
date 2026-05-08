@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview — Conductor Task Management</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared scripts -->
+  <script src="theme.js"></script>
+  <script src="data.js"></script>
+  <script>window.CURRENT_PAGE = 'index';</script>
+  <script src="nav.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-300 font-sans min-h-screen antialiased">
+
+  <!-- Navigation root -->
+  <div id="nav-root"></div>
+
+  <!-- Main content -->
+  <main class="ml-0 lg:ml-[260px] min-h-screen">
+    <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
+
+      <!-- Source link chip -->
+      <div class="mb-6">
+        <a href="https://www.notion.so/359d1ecb21898155814bd4ba6597645b" target="_blank"
+           class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Notion PRD (source of truth)
+        </a>
+      </div>
+
+      <!-- Page title -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Overview</h2>
+        <p class="text-sm text-slate-500 mt-1">Conductor Task Creation & Management — v0.1 draft</p>
+      </div>
+
+      <!-- Problem statement -->
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-6 mb-8">
+        <h3 class="text-base font-semibold text-slate-100 mb-4">Problem Statement</h3>
+        <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+          <p>Maestro's business model rests on a simple split: <strong class="text-slate-100">the customer just wants the perfect trip; the business needs that perfect trip to be delivered correctly <em>and cheaply</em>.</strong></p>
+
+          <p>Planning a trip isn't the hard part — anyone can do that. The hard part is the long tail of small jobs behind a perfect trip. Each is small. There are dozens per trip. Across a portfolio, thousands.</p>
+
+          <p>"Cheaply" means <strong class="text-slate-100">AI does the work where it can; humans do it where AI can't.</strong> Both kinds of work need to live in one system so the team never loses track of what's happening, who (or what) is doing it, and whether it's done.</p>
+
+          <p>The job of Conductor's task layer is therefore three things:</p>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li><strong class="text-slate-100">Detect</strong> — see every task that needs to happen, across human-judgment moments and ambient system signals</li>
+            <li><strong class="text-slate-100">Route</strong> — send each task to the cheapest competent worker (AI or human)</li>
+            <li><strong class="text-slate-100">Close</strong> — confirm completion confidently, auto-close where the system can prove it's done, manual where it can't</li>
+          </ul>
+
+          <p>If we get this right, a single travel advisor can run the trip volume that today takes a small ops team. If we get it wrong, the AI either drowns the team in noise or misses the moments that matter. Both kill the unit economics.</p>
+        </div>
+      </div>
+
+      <!-- Stat cards (clickable -> related page) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+        <a href="origins.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
+          <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">5</div>
+          <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">Origin Buckets</div>
+        </a>
+        <a href="write-streams.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
+          <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">9</div>
+          <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">WRITE Streams</div>
+        </a>
+        <a href="read-streams.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
+          <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">11</div>
+          <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">READ Queries</div>
+        </a>
+        <a href="lifecycle.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
+          <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">3</div>
+          <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">Lifecycle Stages</div>
+        </a>
+        <a href="open-questions.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
+          <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">10</div>
+          <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">Open Questions</div>
+        </a>
+      </div>
+
+      <!-- Reference patterns -->
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-6">
+        <h3 class="text-base font-semibold text-slate-100 mb-4">Reference Patterns</h3>
+        <p class="text-sm text-slate-400 mb-4">External products with shipped patterns we can borrow from. Linked here so the alignment meeting has a shared visual vocabulary.</p>
+        <div class="space-y-3">
+          <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
+            <div class="text-sm font-medium text-slate-200 mb-2">Claude Desktop scheduled tasks</div>
+            <p class="text-xs text-slate-400 leading-relaxed">Conversational creation ("set up a daily X"), proactive firing with desktop notification, dedicated <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Scheduled</code> section in sidebar, view/edit/disable from same UI. A widely-cited pattern for proactive task surfacing — useful reference for World-driven and Trip lifecycle origins, and for proactive closure suggestions.</p>
+          </div>
+          <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
+            <div class="text-sm font-medium text-slate-200 mb-2">Front Copilot</div>
+            <p class="text-xs text-slate-400 leading-relaxed">Context-aware reply suggestions with source transparency (which past conversations / knowledge base entries informed the suggestion). Useful reference for in-chat AI suggestions — particularly the source-citation pattern, which builds operator trust.</p>
+          </div>
+          <div class="border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors">
+            <div class="text-sm font-medium text-slate-200 mb-2">Superhuman Instant Reply</div>
+            <p class="text-xs text-slate-400 leading-relaxed">Inline reply variations generated as you read; multiple variations to pick from, send with one click. Useful reference for the lightweight UX of an inline suggestion that doesn't break flow.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
