@@ -14,17 +14,12 @@
   <script src="data.js"></script>
   <script>window.CURRENT_PAGE = 'open-questions';</script>
   <script src="nav.js"></script>
-  <script src="answerstoquestion.js"></script>
 
   <style>
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #0f172a; }
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #475569; }
-
-    .question-card.is-answered {
-      border-left: 3px solid #10b981;
-    }
   </style>
 </head>
 
@@ -43,31 +38,18 @@
         </a>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-8">
         <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Open Questions</h2>
         <p class="text-sm text-slate-500 mt-1">For the alignment meeting</p>
       </div>
-
-      <!-- How to update notice -->
-      <div class="mb-4 bg-slate-900/40 border border-slate-800 rounded-lg px-4 py-2.5 flex items-start gap-3">
-        <svg class="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-        </svg>
-        <div class="text-xs text-slate-400 leading-relaxed">
-          <strong class="text-slate-200">Edit answers in</strong> <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-200 font-mono text-[11px]">answerstoquestion.js</code>. Commit + push and Pages rebuilds in 30-60 sec. Empty strings render as "Not yet answered" below.
-        </div>
-      </div>
-
-      <!-- Status -->
-      <div class="text-xs text-slate-500 mb-6" id="status">Loading…</div>
 
       <p class="text-sm text-slate-400 mb-6 leading-relaxed">These are the calls only the PM + TA leads can make. The outline does <em>not</em> pre-decide them.</p>
 
       <!-- 2-col grid of 10 question cards -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="1">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">1</span>
             </div>
@@ -76,14 +58,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">Five buckets in §3. Which 1-2 do we build for first? Different stakeholders may rank the buckets differently — World-driven (weather, vendor changes) versus Client-driven (explicit requests) versus Trip lifecycle (pre-arrival prep). Rank order is the gate before any scoping.</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="2">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">2</span>
             </div>
@@ -92,14 +70,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">Per-stream, not blanket. Some need real-time push (flight delays); some hourly is plenty (vendor pricing); some daily (birthdays). Affects infra cost and operator perception of "liveness."</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="3">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">3</span>
             </div>
@@ -108,14 +82,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">Matrix in §6.4. The proposed defaults are a starting point. Worth a working session.</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="4">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">4</span>
             </div>
@@ -124,14 +94,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">Auto-tier tasks fire without human review. What's the failure budget — global, or per-bucket? A 1% false-positive rate on relationship-bucket tasks is unacceptable; on internal-ops it's fine.</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="5">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">5</span>
             </div>
@@ -140,14 +106,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">Same auto/assist/escalate tier model as creation, or separate? E.g. an <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">assist</code>-tier task might still auto-close — or always require human ACK on closure regardless of creation tier.</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="6">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">6</span>
             </div>
@@ -156,14 +118,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">What's on a TA's morning Tasks dashboard? An ops associate's? Different roles, different rituals — drives onboarding and product feel.</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="7">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">7</span>
             </div>
@@ -172,14 +130,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">When the agent splits into AI sub-tasks + human sub-tasks inside a single agent run, do those flow into the global Tasks dashboard, or live local to the agent run?</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="8">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">8</span>
             </div>
@@ -188,14 +142,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">Several READ-stream queries (deal thresholds, award-space scans, expiring documents) feel like alerts more than tasks. Where does Tasks stop and a separate Alerts surface start? Affects whether a task is created up front, or only created when the user acts on the alert.</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="9">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">9</span>
             </div>
@@ -204,14 +154,10 @@
               <p class="text-xs text-slate-400 leading-relaxed">Should there be a global rule: any task tied to a VVIP client or a > $X booking auto-escalates regardless of bucket?</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
-        <div class="question-card bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors" data-q="10">
-          <div class="flex gap-3 mb-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
               <span class="font-mono text-sm font-bold text-orange-400">10</span>
             </div>
@@ -220,50 +166,11 @@
               <p class="text-xs text-slate-400 leading-relaxed">Closure is sometimes wrong. Beyond a <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Reopen</code> button, do we need a "soft-closed" intermediate state for high-stakes tasks? Trade-off: cleaner UI vs. recoverability.</p>
             </div>
           </div>
-          <div class="answer-block mt-3 pt-3 border-t border-slate-800">
-            <div class="text-[10px] uppercase tracking-wider font-semibold text-green-500 mb-1.5">Answer</div>
-            <div class="answer-text text-xs text-slate-200 leading-relaxed whitespace-pre-line"></div>
-          </div>
         </div>
 
       </div>
     </div>
   </main>
-
-  <script>
-    (function () {
-      document.addEventListener('DOMContentLoaded', () => {
-        const answers = window.QUESTION_ANSWERS || {};
-        const cards = document.querySelectorAll('.question-card');
-        let answeredCount = 0;
-
-        cards.forEach((card) => {
-          const qNum = card.dataset.q;
-          const answer = (answers[qNum] || '').trim();
-          const textEl = card.querySelector('.answer-text');
-
-          if (answer) {
-            textEl.textContent = answer;
-            card.classList.add('is-answered');
-            answeredCount++;
-          } else {
-            textEl.textContent = 'Not yet answered';
-            textEl.classList.add('text-slate-500', 'italic');
-            textEl.classList.remove('text-slate-200');
-          }
-        });
-
-        const status = document.getElementById('status');
-        if (status) {
-          if (answeredCount === 0) {
-            status.textContent = '0 of 10 answered — edit answerstoquestion.js to add your responses';
-          } else {
-            status.textContent = `${answeredCount} of 10 answered`;
-          }
-        }
-      });
-    })();
-  </script>
 
 </body>
 </html>
