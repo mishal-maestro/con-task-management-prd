@@ -1,6 +1,8 @@
-# Conductor Task Management — Interactive PRD
+# Conductor Task Management — Interactive Outline
 
-Web companion to the Conductor Task Creation & Management PRD. The Notion page is the canonical source of truth; this site renders the same content with embedded BPMN diagrams and clickable shape popovers that Notion can't render natively.
+Web companion to the Conductor Task Creation & Management outline. The Notion page is the canonical source of truth; this site renders the same content with embedded BPMN diagrams and clickable shape popovers that Notion can't render natively.
+
+This is an **outline** — a territory map for the alignment meeting. Not a locked-down PRD with acceptance criteria. The Notion doc and this site live alongside each other; either is canonical.
 
 ## Structure
 
@@ -31,7 +33,7 @@ Open `index.html` in a browser. Tailwind via CDN + vanilla JS, no build step.
 - Notion: https://www.notion.so/359d1ecb21898155814bd4ba6597645b
 - Local markdown: `Backlog/Conductor_Task_Management_Outline_v0.1.md`
 
-All text copied verbatim from the PRD. The Interactive PRD adds visual BPMN diagrams and a navigable layout — it is not a replacement for the Notion doc.
+All text copied verbatim from the Notion outline. The Interactive Outline adds visual BPMN diagrams and a navigable layout — it is not a replacement for the Notion page.
 
 ## Stack
 
