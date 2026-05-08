@@ -14,6 +14,6 @@ const NAV_CONFIG = [
 
 const PAGE_DATA = {
   title: 'Conductor Task Management',
-  version: 'v0.1 draft prototype',
+  version: 'Interactive PRD · v0.1 draft',
   notionUrl: 'https://www.notion.so/359d1ecb21898155814bd4ba6597645b',
 };
