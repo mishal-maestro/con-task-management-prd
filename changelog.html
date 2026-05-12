@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog — Conductor Task Mgmt — Interactive Outline</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="theme.js"></script>
+  <script src="data.js"></script>
+  <script>window.CURRENT_PAGE = 'changelog';</script>
+  <script src="nav.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-300 font-sans min-h-screen antialiased">
+
+  <div id="nav-root"></div>
+
+  <main class="ml-0 lg:ml-[260px] min-h-screen">
+    <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
+
+      <div class="mb-6">
+        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
+           class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Notion outline (source of truth)
+        </a>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Changelog</h2>
+        <p class="text-sm text-slate-500 mt-1">Version history</p>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- v0.2 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-base font-semibold text-slate-100">v0.2 (2026-05-12) — applying PM feedback from v0.1 review</h3>
+            <p class="text-xs text-slate-400 mt-1">Changes from v0.1, applied row-by-row against the PM's emailed feedback. Each entry references the row ID from the feedback inventory.</p>
+          </div>
+          <div class="px-5 py-4">
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">K3</span>
+                <span class="text-slate-300"><strong>(§6 intro)</strong> — Clarified that <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">auto</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">assist</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">escalate</code> describe how a task is <em>executed</em>, distinct from <em>how</em> it came into existence (the creation approval gate covered in §7.1). Same three tiers, sharper framing.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C9</span>
+                <span class="text-slate-300"><strong>(§2)</strong> — Replaced <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Trip context</code> with <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Primary context anchor</code>. Broader concept (trip / message-conversation / account-member), explicit that internal-ops can be anchor-less in the data model but <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">global</code> is not a user-facing filter option (avoids catch-all dumping).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C10</span>
+                <span class="text-slate-300"><strong>(new §7.4)</strong> — Added Explainability sub-section. AI-suggested / AI-auto-approved tasks surface a one-line rationale + one evidence link. Hard constraint: one line + one link, not paragraphs. Manual tasks: rationale optional. Field-level definitions (<code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">rationale</code>, <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">evidence_refs</code>) on the canonical task come in C6.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">M1</span>
+                <span class="text-slate-300"><strong>(new §10)</strong> — Added Success metrics section with six signals: suggestion acceptance rate, auto-approved task accuracy, false positive rate, time to first action, completion / closure rate, reduction in missed operational moments. Signals only — no targets in this outline.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">N1</span>
+                <span class="text-slate-300"><strong>(new Appendix B)</strong> — Added Task inventory (working list). Enumerates the task types pulled from §3.1–§3.5 plus a B.6 catch-all for manual-created tasks. Each task type tagged with typical creator (Customer / System / Human) and default routing tier. Explicitly flagged as not exhaustive — alignment meeting adds + prunes.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C1</span>
+                <span class="text-slate-300"><strong>(§2 + §3 intro)</strong> — Added <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Creation surface</code> definition paired with <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Origin</code> (origin = why, creation surface = where/how). Appended pairing sentence to §3 intro to make the distinction explicit. §3.5 rename to "(system-sensed)" considered and deliberately omitted — the PM's "ops-driven mixes manual + system" critique doesn't match §3.5's actual content (which is purely system-sensed). Defensive rename can be added later if alignment-meeting reviewers make the same misread.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C2</span>
+                <span class="text-slate-300"><strong>(§2 + §4 + §5 + new Appendix C)</strong> — Renamed <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">WRITE stream</code> → <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Event-driven stream</code> and <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">READ stream</code> → <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Schedule-driven stream</code> (plain English for what they actually are: push vs pull on the data dimension). Updated §4 and §5 headings, table column labels, intro and closing paragraphs to match. Engineering terms (WRITE / READ) retained as parenthetical references in §2 definitions and at the end of Appendix C. The PM's proposed Reactive / Proactive rename was rejected — those labels describe task intent (Dimension B), which is orthogonal to data direction (Dimension A). Conflating them would have introduced a meaning the original split didn't carry. Added Appendix C "Stream direction vs task intent" to spell out the orthogonality with a 4-cell example table, plus a forward-pointer noting that reactive/proactive <em>can</em> become operational at PRD-time (SLA defaults, priority, dashboard sort), just not in this outline.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C8</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> — Added Ownership model bullet: single <strong>primary owner</strong> (accountable for closure) + N <strong>watchers</strong> (visibility / collaboration, no accountability). The PM's proposed multi-assignee model was rejected because shared ownership tends to create a "both see it = neither owns it" failure mode where accountability gets diffused. Watchers meet the underlying visibility need without diffusing responsibility.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C6</span>
+                <span class="text-slate-300"><strong>(§7.2 + new Appendix D)</strong> — Added Canonical task fields block to §7.2 (19 fields covering the PM's 7 + the C8/C9/C10/C1/§6 fields + standard system fields), explicitly framed as data-layer-only with a hard UI constraint of ≤ 2 fields on manual create (title + owner). All other fields inferred / auto-filled to preserve CC v1's 2-second task creation. New Appendix D adds three worked examples (Client-driven Assist / World-driven Escalate / Trip-lifecycle Auto) showing every field populated with the "How populated" column — demonstrates the operator never types 19 fields in practice.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C7</span>
+                <span class="text-slate-300"><strong>(§7.2 + §8)</strong> — Surfaced TWO MVP alternatives for where suggested tasks live: (a) the PM's proposed central Review queue + clean board, or (b) contextual suggestions inline on the trip / message / account they came from, with silent 24h expiry. Both keep the board clean; the difference is whether suggestions cluster centrally or stay scattered. Did not pre-lock — added as new §8 open question 11. §7.2 intro updated from "single dashboard" to "task board" to match.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C4 / Piece 1</span>
+                <span class="text-slate-300"><strong>(§2 definitions)</strong> — Added the 4-stage model vocabulary: <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Signal</code>, <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Suggestion</code>, <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Approval gate</code>, <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Canonical task</code>. Replaced <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Task-shaped intent</code> (subsumed by Signal). Removed <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Trigger</code> (overlapped Signal) and <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">System signal</code> (subsumed by Signal). Chose to keep Signal and Suggestion as separate concepts (not collapsed per the PM's "signal / suggestion" framing) because the distinction earns its keep when multiple signals correlate into one suggestion or signals get filtered out as non-task-worthy. Definition explicitly notes that Signal and Suggestion are often simultaneous for simple cases.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C4 / Piece 2</span>
+                <span class="text-slate-300"><strong>(§7.1)</strong> — Replaced the 3-mode creation model (Manual / Automatic / Hybrid) with the 4-stage flow: Stage 1 Signal → Stage 2 Suggestion → Stage 3 Approval gate → Stage 4 Canonical task. Manual creation explicitly bypasses Stages 1–3. Agent mode is called out as a hybrid (AI sub-tasks travel the 4-stage flow within the agent run; human sub-tasks emerge as direct Canonical tasks). Stage-by-stage description includes the rationale + evidence surfacing at the approval-gate stage (per C10 Explainability).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C4 / Piece 3</span>
+                <span class="text-slate-300"><strong>(new §6.5 + new Appendix E)</strong> — Added Mental-model-per-origin section: PR-review semantics for Client-driven + Relationship; Incident semantics for World-driven + Trip Lifecycle + Internal ops. Explicitly explains why both analogies are needed (forcing one onto the other's work-shape produces predictable failure modes — dead suggestions under PR-review for time-sensitive alerts; auto-resolution under Incident for tone-sensitive relationship work). New Appendix E adds three worked walkthroughs: PR-review for a Client-driven booking request, Incident for a World-driven typhoon alert, and Incident with multi-signal correlation (3 inputs → 1 task) — which demonstrates the correlation property that motivated keeping Signal and Suggestion as separate concepts in Piece 1.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C4 / Piece 4</span>
+                <span class="text-slate-300"><strong>(Appendix A swimlane)</strong> — Updated the swimlane diagram to reflect the 4-stage flow: subgraphs are now Signals → AI processing → Suggestions → Approval gate → Canonical task (previously: Triggers → AI capabilities → Ops/TA review → Tasks system). The Approval gate subgraph now explicitly shows the auto-approval vs human-review branch. Manual creation is depicted with a dotted bypass arrow direct to Canonical task. Agent mode hybrid behaviour called out in the reading notes. Section heading updated from "who creates a task?" to "how a task is created" to match the flow framing.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">C3</span>
+                <span class="text-slate-300"><strong>(§3.1 + §8 q12)</strong> — Split §3.1 Client-driven into 3.1a Explicit and 3.1b Behavioural / implicit. 3.1a covers stated requests (booking, emergency, future seed); 3.1b covers inferred preferences (from message content) and app-behavioural signals (taps, searches, saves). Added explicit rule: behavioural signals feed the taste graph by default; a Suggestion fires only when behaviour + threshold + trip-context coincide. Outcome table shows four representative behaviours mapped to their default outcomes. New §8 question 12 surfaces the behavioural-signal-scope decision as a product call (needs mobile-product input — threshold values not locked in this outline).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">N3</span>
+                <span class="text-slate-300"><strong>(§8 q1)</strong> — Appended the Conductor PM's starting proposal for an MVP cut to §8 question 1: two lanes — (a) explicit client / ops tasks from messaging + core workflows, (b) high-confidence proactive tasks from Trip lifecycle + Internal ops. Behavioural signals, relationship moments, and broader ambient sensing deferred. Framed as a starting proposal for the alignment meeting to react to, with explicit note that it can be refined in the PRD — not a lock at outline grade.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">R8 missing-items batch</span>
+                <span class="text-slate-300"><strong>(§8 questions 13–17)</strong> — Added five open questions surfaced during internal review that the PM didn't flag: q13 closure-tier mapping per origin bucket, q14 AI/human conflict resolution on closure (close → reopen loop), q15 priority assignment rule, q16 workload-balancing enforcement (auto-route vs surface only), q17 VVIP detection rule. All five are gaps in the current outline that affect implementability, surfaced as open questions for the alignment meeting rather than pre-decided.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">R8 operator essentials</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> — Added day-1 operator-essentials block covering keyboard shortcuts (c create / e assign / j/k navigate / x dismiss / Esc close), batch-close with confirm, snooze, mute-signal-for-this-trip, undo on dismissal (10s window), end-of-shift handoff view, and manual-create-now shortcut. Framed as non-optional baseline (CC v1 has most of these; v1 of Conductor can't regress without breaking operator trust).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">R8 manual override path</span>
+                <span class="text-slate-300"><strong>(§7.1)</strong> — Strengthened the manual-creation paragraph to make explicit that the bypass is a first-class fast path, not a fallback. Added that the keyboard shortcut is always available even when suggestions are firing, and that TAs who need to create a task NOW must never be forced through the suggestion pipeline. Cross-references §7.2 Operator essentials.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Terminology normalization</span>
+                <span class="text-slate-300"><strong>(CRM → client profile)</strong> — Maestro doesn't run a separate CRM (Salesforce / HubSpot / etc.); client preference and profile data lives inside Conductor itself, with the "taste graph" being the Maestro-specific term for the structured preference layer. Replaced 10 references to "CRM" in v0.2 with "client profile" (or <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Client profile</code> in tables) for accuracy: §3.1a dietary example, §3.1b outcome-table rows + ownership line, §3.4 intro + Anniversary trip seed example, §3.5 hygiene-gap example, §4 streams-table row (CRM mutations → Client profile mutations), §8 q17 VVIP detection options, Appendix B.5 row. v0.1 still uses CRM (frozen).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">§8 q18 added</span>
+                <span class="text-slate-300"><strong>(Internal-surface signal sources)</strong> — Surfaced as an open question after audit found v0.2 enumerates client-facing channels and external feeds in §4 but not operator-side internal surfaces (Slack threads, operator inboxes, internal tool actions). The 4-stage Signal/Suggestion model in §7.1 generalises to these surfaces, but the specific enumeration + rollout priority is a scope decision for the alignment meeting. PM raised this expansion as a future concern; outline now has a labelled slot for the decision.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Surface-model decision</span>
+                <span class="text-slate-300"><strong>(Option A locked)</strong> — Removed Option B (contextual suggestions, no central queue) from §7.2 per discussion. The Surface model now describes one approach: central task board + Review queue. §8 q11 rewritten from "choose between options" to "Review queue placement + expiry policy" (implementation details). Forward-pointer references in §7.1 and Appendix E.1 updated to match. Earlier changelog entries cleaned of internal-review terminology ("TA stress-test", "BA-critic / TA-voice critique passes") for a cleaner audit-trail.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

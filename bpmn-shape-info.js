@@ -436,14 +436,34 @@ window.BPMN_SHAPE_INFO = {
       '"Check QF award" → AI: live API check. Human: TA decides whether to book.'
     ]
   },
-  'cf-review-gate': {
-    name: 'Review queue',
-    type: 'Exclusive gateway',
-    role: 'AI proposals below auto-confidence land here for human approve / edit / reject.',
+  'cf-suggestion': {
+    name: 'Suggestion',
+    type: 'User task',
+    role: 'AI-proposed draft task awaiting approval. Has rationale, evidence, proposed routing tier — not yet on the main board.',
     examples: [
-      'AI says 75% sure this is a task — human reviews first',
-      'Conversation watcher proposal — TA judges if the moment is right',
-      'Signal monitor proposal — TA decides if alert warrants client outreach'
+      'Per-message classifier proposes "Search: Aman Tokyo, suite, anniversary Oct"',
+      'Signal monitor proposes "Typhoon warning Seoul — client arrival in 48hr"',
+      'Conversation watcher proposes "Client mentioned dietary preference — capture in profile"'
+    ]
+  },
+  'cf-auto-gate': {
+    name: 'Auto-approval?',
+    type: 'Exclusive gateway',
+    role: 'Confidence threshold check. Above threshold for this origin / routing tier → auto-approve. Below → route to human review.',
+    examples: [
+      'Trip lifecycle templated prep task → auto-approve',
+      'World-driven disruption with reliable signal → auto-approve',
+      'Client-driven booking request → route to human review (Assist tier default)'
+    ]
+  },
+  'cf-review-gate': {
+    name: 'Human review',
+    type: 'Exclusive gateway',
+    role: 'Operator reviews the suggestion, sees rationale + evidence (§7.4), can edit any field, then approves or rejects.',
+    examples: [
+      'TA reviews Client-driven booking request, edits dates, approves',
+      'TA reviews Relationship-bucket birthday outreach, adds personal note, approves',
+      'TA reviews low-confidence preference capture, rejects as noise'
     ]
   },
   'cf-manual': {

@@ -31,7 +31,7 @@
     <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
 
       <div class="mb-6">
-        <a href="https://www.notion.so/359d1ecb21898155814bd4ba6597645b" target="_blank"
+        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -43,7 +43,7 @@
         <p class="text-sm text-slate-500 mt-1">Origin taxonomy — five buckets</p>
       </div>
 
-      <p class="text-sm text-slate-400 mb-6 leading-relaxed">A task exists because <em>something needs to happen</em>. There are five buckets of "why" — every task we ever create maps to one or more of them.</p>
+      <p class="text-sm text-slate-400 mb-6 leading-relaxed">A task exists because <em>something needs to happen</em>. There are five buckets of "why" — every task we ever create maps to one or more of them. Origin answers <em>why does this task exist?</em> Creation surface (defined in §2, detailed in §7.1) answers <em>where was it created or detected?</em> A single origin can be reached from multiple surfaces.</p>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
@@ -53,26 +53,76 @@
             <span class="font-mono text-xs uppercase tracking-wider text-orange-500">3.1</span>
             <h3 class="text-base font-semibold text-slate-100">Client-driven</h3>
           </div>
-          <p class="text-sm text-slate-400 mb-4 leading-relaxed">The client tells us — explicitly or implicitly — that they need or want something.</p>
-          <div class="space-y-2.5 mb-4">
-            <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Direct booking request</span> (explicit, transactional): <em>"We need a 4-night stay at the Aman Tokyo for our anniversary, last week of October — suite with city view."</em> → open a search task and map results onto trip components.
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">The client tells us — explicitly or implicitly — that they need or want something. Client-driven signals split into two sub-buckets because confidence and routing implications differ.</p>
+
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-slate-200 mb-2">3.1a Explicit — client stated something</h4>
+            <p class="text-xs text-slate-400 mb-3 leading-relaxed">The client directly said what they need or want, in a message, voice call, or stated in-app request.</p>
+            <div class="space-y-2.5 mb-3">
+              <div class="text-xs text-slate-300">
+                <span class="font-semibold text-slate-200">Direct booking request</span> (transactional): <em>"We need a 4-night stay at the Aman Tokyo for our anniversary, last week of October — suite with city view."</em> → open a search task and map results onto trip components.
+              </div>
+              <div class="text-xs text-slate-300">
+                <span class="font-semibold text-slate-200">Mid-trip emergency</span> (urgent): client lands in Mumbai and the pre-arranged driver isn't there → re-dispatch transport + send an apologetic gesture from the TA.
+              </div>
+              <div class="text-xs text-slate-300">
+                <span class="font-semibold text-slate-200">Future-trip seed</span> (low priority): <em>"We're thinking about Patagonia for our 25th anniversary in 2027."</em> → create a soft trip + tickle file for outreach in late 2026.
+              </div>
             </div>
-            <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Mid-trip emergency</span> (explicit, urgent): Client lands in Mumbai and the pre-arranged driver isn't there → re-dispatch transport + send an apologetic gesture from the TA.
-            </div>
-            <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Vague taste signal</span> (implicit, preference): On a past trip the client said <em>"the Lutetia was way too modern for us"</em> → save preference: avoid contemporary properties; surface on next planning cycle.
-            </div>
-            <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Health / dietary signal</span> (implicit, context): Client mentions in passing <em>"I've been doing keto since January"</em> → update CRM dietary; brief all upcoming restaurant bookings.
-            </div>
-            <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Future-trip seed</span> (explicit, low priority): <em>"We're thinking about Patagonia for our 25th anniversary in 2027."</em> → create a soft trip + tickle file for outreach in late 2026.
+            <div class="text-xs text-slate-500 border-t border-slate-700 pt-2">
+              <span class="font-semibold text-slate-400">Typical owner:</span> TA for relationship-critical responses; ops for transactional execution.<br>
+              <span class="font-semibold text-slate-400">Default routing:</span> Assist — AI drafts response, human approves.
             </div>
           </div>
-          <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
-            <span class="font-semibold text-slate-400">Typical owner:</span> TA for relationship-critical responses; ops for transactional execution.
+
+          <div>
+            <h4 class="text-sm font-semibold text-slate-200 mb-2">3.1b Behavioural / implicit — inferred from context</h4>
+            <p class="text-xs text-slate-400 mb-3 leading-relaxed">The client didn't directly ask for anything, but their behaviour (in chat or in the app) signals preference, intent, or need.</p>
+            <div class="space-y-2.5 mb-3">
+              <div class="text-xs text-slate-300">
+                <span class="font-semibold text-slate-200">Vague taste signal</span> (from message content): on a past trip the client said <em>"the Lutetia was way too modern for us"</em> → save preference: avoid contemporary properties.
+              </div>
+              <div class="text-xs text-slate-300">
+                <span class="font-semibold text-slate-200">Health / dietary signal</span> (from message content): client mentions in passing <em>"I've been doing keto since January"</em> → update client profile dietary; brief all upcoming restaurant bookings.
+              </div>
+              <div class="text-xs text-slate-300">
+                <span class="font-semibold text-slate-200">App behavioural signal:</span> client taps 4 Aman properties in same region during an active planning window → consider a planning nudge. Or: client saves 3 deals to Maldives over 2 weeks → consider a discovery push.
+              </div>
+            </div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded p-3 mb-3">
+              <p class="text-xs text-slate-300 mb-2 font-semibold">Key rule — behavioural signals don't become tasks by default.</p>
+              <p class="text-xs text-slate-400 mb-2">They feed the <strong>taste graph / client profile</strong> as background context. A Suggestion fires only when the signal meets a <strong>threshold + trip-context</strong> condition: enough signals in a tight window, plus an active or imminent trip the signal informs.</p>
+              <table class="w-full text-xs mt-2">
+                <thead>
+                  <tr class="border-b border-slate-700">
+                    <th class="text-left py-1.5 text-slate-400 font-semibold">Behaviour</th>
+                    <th class="text-left py-1.5 text-slate-400 font-semibold">Outcome</th>
+                  </tr>
+                </thead>
+                <tbody class="text-slate-300">
+                  <tr class="border-b border-slate-700/50">
+                    <td class="py-1.5">Single tap on a Maldives property</td>
+                    <td class="py-1.5">Client profile update only, no task</td>
+                  </tr>
+                  <tr class="border-b border-slate-700/50">
+                    <td class="py-1.5">Liked 4 properties in same region during an active planning window</td>
+                    <td class="py-1.5">Suggestion fires — "client seems decided on region X; explore?"</td>
+                  </tr>
+                  <tr class="border-b border-slate-700/50">
+                    <td class="py-1.5">Searched "honeymoon Bali" 3 times in a week, no active trip</td>
+                    <td class="py-1.5">Client profile update + soft trip seed; no immediate task</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5">Repeated dynamic-trip-card opens on an upcoming trip's hotel detail</td>
+                    <td class="py-1.5">Suggestion to TA — "client engaging with this booking; offer to walk them through?"</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-xs text-slate-500 border-t border-slate-700 pt-2">
+              <span class="font-semibold text-slate-400">Typical owner:</span> TA for the inferred preference-to-trip translation; ops for client profile updates.<br>
+              <span class="font-semibold text-slate-400">Default routing:</span> Assist (preference capture) or Suggestion-only (behavioural threshold) — depending on confidence.
+            </div>
           </div>
         </div>
 
@@ -140,22 +190,22 @@
             <span class="font-mono text-xs uppercase tracking-wider text-orange-500">3.4</span>
             <h3 class="text-base font-semibold text-slate-100">Relationship</h3>
           </div>
-          <p class="text-sm text-slate-400 mb-4 leading-relaxed">Pure relationship-layer moments, sourced from CRM or accumulated context, surfaced by date or pattern.</p>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">Pure relationship-layer moments, sourced from the client profile or accumulated context, surfaced by date or pattern.</p>
           <div class="space-y-2.5 mb-4">
             <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Birthday outreach (T-7 days):</span> Client's birthday in a week → TA hand-crafts a card or gift, ideally tied to a property or preference they love.
+              <span class="font-semibold text-slate-200">Birthday outreach (T-7 days):</span> client's birthday in a week → TA hand-crafts a card or gift, ideally tied to a property or preference they love.
             </div>
             <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Anniversary trip seed:</span> Couple's wedding anniversary visible in CRM → propose a destination drawn from their history (e.g. "where they honeymooned 5 years ago") ahead of the next planning cycle.
+              <span class="font-semibold text-slate-200">Anniversary trip seed:</span> couple's wedding anniversary visible in the client profile → propose a destination drawn from their history (e.g. <em>"where they honeymooned 5 years ago"</em>) ahead of the next planning cycle.
             </div>
             <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Returning-client gesture (3rd trip):</span> Client books their 3rd trip with us → trigger a personalised welcome amenity request at the destination property, charged to the relationship.
+              <span class="font-semibold text-slate-200">Returning-client gesture (3rd trip):</span> client books their 3rd trip with us → trigger a personalised welcome amenity request at the destination property, charged to the relationship.
             </div>
             <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Care-context check-in:</span> Client mentioned a parent's chemo on a past trip → 6 weeks later, a gentle "thinking of you" message <em>before</em> any commercial outreach lands.
+              <span class="font-semibold text-slate-200">Care-context check-in:</span> client mentioned a parent's chemo on a past trip → 6 weeks later, a gentle <em>"thinking of you"</em> message <em>before</em> any commercial outreach lands.
             </div>
             <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">Referral acknowledgement:</span> Existing client's friend signs up via referral → thank-you message to the referrer, and a flag to mention the new client's first trip on the next monthly check-in.
+              <span class="font-semibold text-slate-200">Referral acknowledgement:</span> existing client's friend signs up via referral → thank-you message to the referrer, and a flag to mention the new client's first trip on the next monthly check-in.
             </div>
           </div>
           <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
@@ -178,7 +228,7 @@
               <span class="font-semibold text-slate-200">Shift handoff prep:</span> APAC shift end → generate end-of-shift summary with open issues + watch list for the EMEA shift starting in 2 hours.
             </div>
             <div class="text-xs text-slate-300">
-              <span class="font-semibold text-slate-200">CRM hygiene gap:</span> Trip closed last week with a new preference observed in chat ("hates spicy food") but never logged → reminder to update the CRM before the trip file is considered done.
+              <span class="font-semibold text-slate-200">Client profile hygiene gap:</span> trip closed last week with a new preference observed in chat (<em>"hates spicy food"</em>) but never logged → reminder to update the client profile before the trip file is considered done.
             </div>
             <div class="text-xs text-slate-300">
               <span class="font-semibold text-slate-200">SLA breach forming:</span> VVIP client's message unanswered > 90 min → escalate to ops manager and the assigned TA in parallel.

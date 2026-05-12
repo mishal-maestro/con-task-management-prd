@@ -31,7 +31,7 @@
     <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
 
       <div class="mb-6">
-        <a href="https://www.notion.so/359d1ecb21898155814bd4ba6597645b" target="_blank"
+        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -51,18 +51,33 @@
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
-          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Task-shaped intent</div>
-          <p class="text-sm text-slate-300 leading-relaxed">The signal in a client message, ops conversation, or external event that <em>something needs to be done</em>. Examples: client requests a connecting room; vendor announces a price change; flight delayed by 4 hrs.</p>
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Signal</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A raw event or sensed condition that may be task-shaped — a client message, an external alert, a sensor reading, a scheduled-query hit. Not yet a task. The system evaluates whether to promote one or more signals into a Suggestion.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Suggestion</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The system's proposed task, synthesized from one or more Signals and awaiting an Approval gate. May be auto-approved (above threshold) or routed to a human reviewer. Often simultaneous with the Signal for simple cases (one message → one suggestion); distinct when the system correlates multiple signals into one suggestion (3 messages + 1 vendor email about the same hotel issue → one suggestion, not four) or filters out signals that don't warrant a task.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Approval gate</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The decision point between Suggestion and Canonical task. Two paths: auto-approval (system confidence above threshold for that origin / routing tier) or human approval (operator reviews, can edit, then approves or rejects). Manual task creation bypasses the gate.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Canonical task</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The approved task record — same as Task, but emphasises that this is the single source of truth. Different surfaces (board, trip page, account page, agent mode) render this record differently. A Suggestion becomes a Canonical task once it passes the Approval gate. See §7.2 for the schema.</p>
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
           <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Origin</div>
-          <p class="text-sm text-slate-300 leading-relaxed">The <em>why</em> a task exists — the underlying reason it needs to happen. See §3 for the taxonomy.</p>
+          <p class="text-sm text-slate-300 leading-relaxed">The <em>why</em> a task exists — the underlying reason it needs to happen. See §3 for the taxonomy. Distinct from <em>creation surface</em> (below).</p>
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
-          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Trigger</div>
-          <p class="text-sm text-slate-300 leading-relaxed">The originating event that <em>might</em> spawn a task. Triggers feed into AI capabilities or are surfaced directly to a human.</p>
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Creation surface</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The <em>where / how</em> a task was created or detected — message bubble action, inline suggestion, agent mode, trip view, signal monitor, scheduled query. A single origin can be reached from multiple surfaces. See §7.1 for the creation paths.</p>
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
@@ -81,13 +96,8 @@
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
-          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">System signal</div>
-          <p class="text-sm text-slate-300 leading-relaxed">An external event detected by ambient monitoring — weather alert, flight delay, vendor pricing change, advisory level. Distinct from a client message.</p>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
-          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Trip context</div>
-          <p class="text-sm text-slate-300 leading-relaxed">The link between a task and a specific trip, so monitoring signals only fire for active or upcoming trips. A weather alert for Seoul is only a task if a client is travelling to Seoul.</p>
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Primary context anchor</div>
+          <p class="text-sm text-slate-300 leading-relaxed">The system object a task is bound to — typically <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">trip</code>, <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">message/conversation</code>, or <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-xs">account/member</code>. Internal-ops tasks may be anchor-less in the data model, but the UI does not surface 'global' as a user-facing option (avoids becoming a catch-all). The anchor determines where the task surfaces (trip page, conversation thread, account view) and is the key handle for filtering.</p>
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
@@ -96,13 +106,13 @@
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
-          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">WRITE stream</div>
-          <p class="text-sm text-slate-300 leading-relaxed">A continuous feed of events arriving in our system that <em>may</em> spawn a task. The push side. See §4.</p>
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Event-driven stream</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A continuous feed of events arriving in our system from outside that <em>may</em> spawn a task. See §4. (Engineering term: WRITE / push.)</p>
         </div>
 
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
-          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">READ stream</div>
-          <p class="text-sm text-slate-300 leading-relaxed">A query we run repeatedly against our own data to surface tasks from patterns or absences. The pull side. See §5.</p>
+          <div class="font-mono text-xs uppercase tracking-wider text-orange-500 mb-2">Schedule-driven stream</div>
+          <p class="text-sm text-slate-300 leading-relaxed">A query we run on our own stored data on a schedule, surfacing tasks from patterns or absences. See §5. (Engineering term: READ / pull.)</p>
         </div>
 
       </div>

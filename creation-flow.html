@@ -35,7 +35,7 @@
     <div class="max-w-[1600px] mx-auto px-6 py-8 pt-14 lg:pt-8">
 
       <div class="mb-6">
-        <a href="https://www.notion.so/359d1ecb21898155814bd4ba6597645b" target="_blank"
+        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -43,83 +43,99 @@
       </div>
 
       <div class="mb-8">
-        <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Master Creation Swimlane</h2>
-        <p class="text-sm text-slate-500 mt-1">Who creates a task — multi-actor flow</p>
+        <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">How a Task is Created</h2>
+        <p class="text-sm text-slate-500 mt-1">4-stage creation flow with 5 AI processing capabilities</p>
       </div>
 
-      <p class="text-sm text-slate-400 mb-6 leading-relaxed">Visual of the creation paths grouped by actor capability. AI is treated as a first-class actor with four distinct capabilities — message classifier, conversation watcher, signal monitor, agent mode — plus the scheduled-query capability that drives the READ side.</p>
+      <p class="text-sm text-slate-400 mb-6 leading-relaxed">Visual of the creation paths through the 4-stage flow defined in §7.1. AI is treated as a first-class actor with five distinct processing capabilities — message classifier, conversation watcher, signal monitor, scheduled query, agent mode. The flow runs left to right: Signal → AI processing → Suggestion → Approval gate → Canonical task.</p>
 
       <!-- Master Creation Swimlane BPMN -->
-      <div class="section-title"><span class="num">4</span> Master Creation Swimlane</div>
+      <div class="section-title"><span class="num">A</span> Creation Flow — 4 Stages</div>
 
 <div class="pool-scroll" style="margin-bottom:60px;">
-<div class="pool" style="min-width:2400px;">
-  <div class="pool-header">TASK CREATION</div>
+<div class="pool" style="min-width:2600px;">
+  <div class="pool-header">TASK CREATION — 4-STAGE FLOW</div>
   <div class="pool-content">
 
+    <!-- Lane 1: Signals -->
     <div class="lane">
-      <div class="lane-header">Triggers</div>
-      <div class="lane-content" style="min-height:580px;">
-        <div class="event-start" id="cf-msg" style="position:absolute;left:40px;top:40px;"></div>
-        <div style="position:absolute;left:90px;top:35px;font-size:9px;color:#12B28C;max-width:100px;">Client message</div>
+      <div class="lane-header">Signals</div>
+      <div class="lane-content" style="min-height:600px;">
+        <div class="event-start" id="cf-msg" style="position:absolute;left:40px;top:50px;"></div>
+        <div style="position:absolute;left:90px;top:45px;font-size:9px;color:#12B28C;max-width:100px;">Client message</div>
 
-        <div class="event-start" id="cf-sig" style="position:absolute;left:40px;top:130px;"></div>
-        <div style="position:absolute;left:90px;top:125px;font-size:9px;color:#12B28C;max-width:100px;">External signal</div>
+        <div class="event-start" id="cf-sig" style="position:absolute;left:40px;top:140px;"></div>
+        <div style="position:absolute;left:90px;top:135px;font-size:9px;color:#12B28C;max-width:100px;">External signal</div>
 
-        <div class="event-start" id="cf-state" style="position:absolute;left:40px;top:220px;"></div>
-        <div style="position:absolute;left:90px;top:215px;font-size:9px;color:#12B28C;max-width:110px;">Trip / state change</div>
+        <div class="event-start" id="cf-state" style="position:absolute;left:40px;top:230px;"></div>
+        <div style="position:absolute;left:90px;top:225px;font-size:9px;color:#12B28C;max-width:110px;">Trip / state change</div>
 
-        <div class="event-start" id="cf-prompt" style="position:absolute;left:40px;top:310px;"></div>
-        <div style="position:absolute;left:90px;top:305px;font-size:9px;color:#12B28C;max-width:110px;">Ops prompts agent</div>
+        <div class="event-start" id="cf-prompt" style="position:absolute;left:40px;top:320px;"></div>
+        <div style="position:absolute;left:90px;top:315px;font-size:9px;color:#12B28C;max-width:110px;">Ops prompts agent</div>
 
-        <div class="event-start" id="cf-spot" style="position:absolute;left:40px;top:500px;"></div>
-        <div style="position:absolute;left:90px;top:495px;font-size:9px;color:#12B28C;max-width:110px;">Ops spots something</div>
+        <div class="event-start" id="cf-spot" style="position:absolute;left:40px;top:510px;"></div>
+        <div style="position:absolute;left:90px;top:505px;font-size:9px;color:#12B28C;max-width:110px;">Ops spots something</div>
       </div>
     </div>
 
-    <div class="lane" style="flex:1.4;">
-      <div class="lane-header">AI capabilities</div>
-      <div class="lane-content" style="min-height:580px;">
-        <div class="task service-task" id="cf-classifier" style="left:40px;top:30px;">
+    <!-- Lane 2: AI processing -->
+    <div class="lane" style="flex:1.3;">
+      <div class="lane-header">AI processing</div>
+      <div class="lane-content" style="min-height:600px;">
+        <div class="task service-task" id="cf-classifier" style="left:40px;top:40px;">
           <div class="task-label">Per-message classifier</div>
         </div>
-        <div class="task service-task" id="cf-watcher" style="left:40px;top:90px;">
+        <div class="task service-task" id="cf-watcher" style="left:40px;top:100px;">
           <div class="task-label">Conversation watcher</div>
         </div>
-        <div class="task service-task" id="cf-monitor" style="left:40px;top:210px;">
+        <div class="task service-task" id="cf-monitor" style="left:40px;top:220px;">
           <div class="task-label">Signal monitor</div>
         </div>
-        <div class="task service-task" id="cf-scheduler" style="left:40px;top:300px;">
+        <div class="task service-task" id="cf-scheduler" style="left:40px;top:310px;">
           <div class="task-label">Scheduled query</div>
         </div>
-        <div class="task service-task" id="cf-agent" style="left:40px;top:390px;">
+        <div class="task service-task" id="cf-agent" style="left:40px;top:400px;">
           <div class="task-label">Agent mode</div>
-          <div class="task-sub">Splits AI + human sub-tasks</div>
         </div>
       </div>
     </div>
 
-    <div class="lane">
-      <div class="lane-header">Human review</div>
-      <div class="lane-content" style="min-height:580px;">
-        <div class="gateway exclusive" id="cf-review-gate" style="left:80px;top:200px;">
+    <!-- Lane 3: Suggestions -->
+    <div class="lane" style="flex:0.9;">
+      <div class="lane-header">Suggestions</div>
+      <div class="lane-content" style="min-height:600px;">
+        <div class="task user-task" id="cf-suggestion" style="left:40px;top:200px;width:140px;">
+          <div class="task-label">Suggestion</div>
+          <div class="task-sub">Draft, awaiting approval</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lane 4: Approval gate -->
+    <div class="lane" style="flex:1.1;">
+      <div class="lane-header">Approval gate</div>
+      <div class="lane-content" style="min-height:600px;">
+        <div class="gateway exclusive" id="cf-auto-gate" style="left:60px;top:120px;">
           <div class="gw-icon">×</div>
         </div>
-        <div class="task manual-task" id="cf-manual" style="left:30px;top:490px;">
-          <div class="task-label">Manual create</div>
-          <div class="task-sub">Ops bypass</div>
+        <div style="position:absolute;left:10px;top:105px;font-size:9px;color:#f59e0b;max-width:110px;text-align:center;">Auto-approval?<br/>above threshold</div>
+
+        <div class="gateway exclusive" id="cf-review-gate" style="left:60px;top:280px;">
+          <div class="gw-icon">×</div>
         </div>
+        <div style="position:absolute;left:15px;top:265px;font-size:9px;color:#f59e0b;max-width:100px;text-align:center;">Human review<br/>approve · edit · reject</div>
       </div>
     </div>
 
-    <div class="lane">
-      <div class="lane-header">Tasks system</div>
-      <div class="lane-content" style="min-height:580px;">
+    <!-- Lane 5: Canonical task -->
+    <div class="lane" style="flex:0.9;">
+      <div class="lane-header">Canonical task</div>
+      <div class="lane-content" style="min-height:600px;">
         <div class="event-end" id="cf-created" style="position:absolute;left:60px;top:60px;"></div>
-        <div style="position:absolute;left:110px;top:55px;font-size:10px;color:#12B28C;max-width:100px;">Task created</div>
+        <div style="position:absolute;left:110px;top:55px;font-size:10px;color:#12B28C;max-width:100px;">Task on board</div>
 
-        <div class="event-end" id="cf-dismissed" style="position:absolute;left:60px;top:340px;"></div>
-        <div style="position:absolute;left:110px;top:335px;font-size:10px;color:#ef4444;max-width:100px;">Dismissed</div>
+        <div class="event-end" id="cf-dismissed" style="position:absolute;left:60px;top:380px;"></div>
+        <div style="position:absolute;left:110px;top:375px;font-size:10px;color:#ef4444;max-width:100px;">Dismissed</div>
       </div>
     </div>
 
@@ -128,19 +144,16 @@
 </div>
 </div>
 
-      <!-- Connection logic notes -->
+      <!-- Reading the diagram notes -->
       <div class="bg-slate-900 border border-slate-800 rounded-lg p-6 mb-8">
-        <h3 class="text-base font-semibold text-slate-100 mb-3">Connection Logic</h3>
+        <h3 class="text-base font-semibold text-slate-100 mb-3">Reading the diagram</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li class="flex gap-2"><span class="text-blue-500">•</span> Client message → both Per-message classifier and Conversation watcher</li>
-          <li class="flex gap-2"><span class="text-blue-500">•</span> External signal → Signal monitor</li>
-          <li class="flex gap-2"><span class="text-blue-500">•</span> Trip / state change → Scheduled query</li>
-          <li class="flex gap-2"><span class="text-blue-500">•</span> Ops prompts agent → Agent mode (skips review, splits into AI + human sub-tasks — annotate this)</li>
-          <li class="flex gap-2"><span class="text-blue-500">•</span> Ops spots → bypasses AI lane entirely, goes direct to "Manual create" → "Task created"</li>
-          <li class="flex gap-2"><span class="text-green-500">•</span> Per-message classifier auto tier → direct to "Task created"</li>
-          <li class="flex gap-2"><span class="text-amber-500">•</span> Per-message classifier assist/escalate, Conversation watcher, Signal monitor, Scheduled query → all flow into the human review gateway</li>
-          <li class="flex gap-2"><span class="text-green-500">•</span> Review approve/edit → "Task created"</li>
-          <li class="flex gap-2"><span class="text-red-500">•</span> Review reject → "Dismissed"</li>
+          <li class="flex gap-2"><span class="text-blue-500">•</span> Signals (left) enter AI processing — five processors handle different signal types (one signal can feed more than one processor; one processor can correlate multiple signals into one suggestion)</li>
+          <li class="flex gap-2"><span class="text-blue-500">•</span> Each processor produces a Suggestion — a draft task, not yet canonical</li>
+          <li class="flex gap-2"><span class="text-green-500">•</span> The Approval gate decides: auto-approve (above confidence threshold for the origin / routing tier) or route to human review</li>
+          <li class="flex gap-2"><span class="text-green-500">•</span> Approved suggestions become Canonical tasks (live on the board); rejected ones are dismissed</li>
+          <li class="flex gap-2"><span class="text-amber-500">•</span> Manual creation (dotted line) bypasses Signal / Suggestion / Approval gate entirely — operators creating tasks directly land them as Canonical</li>
+          <li class="flex gap-2"><span class="text-amber-500">•</span> Agent mode is a hybrid — when invoked it can produce both AI sub-tasks (which travel the 4-stage flow) and human sub-tasks (which emerge directly as Canonical tasks routed to the appropriate operator)</li>
         </ul>
       </div>
 
@@ -164,26 +177,33 @@
         if (!pool || !svg) return;
         BPMN.prepareSvg(svg, pool);
 
-        // Triggers → AI capabilities
+        // Signals → AI processing
         BPMN.drawConnection(svg, pool, 'cf-msg', 'cf-classifier', 'sequence');
         BPMN.drawConnection(svg, pool, 'cf-msg', 'cf-watcher', 'sequence');
         BPMN.drawConnection(svg, pool, 'cf-sig', 'cf-monitor', 'sequence');
         BPMN.drawConnection(svg, pool, 'cf-state', 'cf-scheduler', 'sequence');
         BPMN.drawConnection(svg, pool, 'cf-prompt', 'cf-agent', 'sequence');
-        BPMN.drawConnection(svg, pool, 'cf-spot', 'cf-manual', 'sequence');
 
-        // AI → review gateway or direct create
-        BPMN.drawConnection(svg, pool, 'cf-classifier', 'cf-review-gate', 'sequence', 'Assist / escalate');
-        BPMN.drawConnection(svg, pool, 'cf-classifier', 'cf-created', 'sequence', 'Auto');
-        BPMN.drawConnection(svg, pool, 'cf-watcher', 'cf-review-gate', 'sequence');
-        BPMN.drawConnection(svg, pool, 'cf-monitor', 'cf-review-gate', 'sequence');
-        BPMN.drawConnection(svg, pool, 'cf-scheduler', 'cf-review-gate', 'sequence');
-        BPMN.drawConnection(svg, pool, 'cf-agent', 'cf-created', 'sequence');
-        BPMN.drawConnection(svg, pool, 'cf-manual', 'cf-created', 'sequence');
+        // AI processing → Suggestion
+        BPMN.drawConnection(svg, pool, 'cf-classifier', 'cf-suggestion', 'sequence');
+        BPMN.drawConnection(svg, pool, 'cf-watcher', 'cf-suggestion', 'sequence');
+        BPMN.drawConnection(svg, pool, 'cf-monitor', 'cf-suggestion', 'sequence');
+        BPMN.drawConnection(svg, pool, 'cf-scheduler', 'cf-suggestion', 'sequence');
+        BPMN.drawConnection(svg, pool, 'cf-agent', 'cf-suggestion', 'sequence');
 
-        // Gateway outputs
-        BPMN.drawConnection(svg, pool, 'cf-review-gate', 'cf-created', 'sequence', 'Approve / edit');
-        BPMN.drawConnection(svg, pool, 'cf-review-gate', 'cf-dismissed', 'sequence', 'Reject');
+        // Suggestion → Auto-approval gate
+        BPMN.drawConnection(svg, pool, 'cf-suggestion', 'cf-auto-gate', 'sequence');
+
+        // Auto-approval gate → yes (Task on board) / no (Human review)
+        BPMN.drawConnection(svg, pool, 'cf-auto-gate', 'cf-created', 'sequence', 'yes');
+        BPMN.drawConnection(svg, pool, 'cf-auto-gate', 'cf-review-gate', 'sequence', 'no');
+
+        // Human review gate → approve/edit (Task on board) / reject (Dismissed)
+        BPMN.drawConnection(svg, pool, 'cf-review-gate', 'cf-created', 'sequence', 'approve · edit');
+        BPMN.drawConnection(svg, pool, 'cf-review-gate', 'cf-dismissed', 'sequence', 'reject');
+
+        // Manual creation bypass (dotted line)
+        BPMN.drawConnection(svg, pool, 'cf-spot', 'cf-created', 'message', 'manual create — bypass stages 1-3');
       }, 100);
     });
   </script>

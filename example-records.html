@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example Records — Conductor Task Mgmt — Interactive Outline</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="theme.js"></script>
+  <script src="data.js"></script>
+  <script>window.CURRENT_PAGE = 'example-records';</script>
+  <script src="nav.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-300 font-sans min-h-screen antialiased">
+
+  <div id="nav-root"></div>
+
+  <main class="ml-0 lg:ml-[260px] min-h-screen">
+    <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
+
+      <div class="mb-6">
+        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
+           class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Notion outline (source of truth)
+        </a>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Example Canonical Task Records</h2>
+        <p class="text-sm text-slate-500 mt-1">The schema in action</p>
+      </div>
+
+      <p class="text-sm text-slate-400 mb-6 leading-relaxed">Three example tasks pulled from §3 / Appendix B, with their canonical fields populated. Shows the schema in §7.2 in action — and how much is inferred vs explicit at creation time.</p>
+
+      <div class="space-y-8">
+
+        <!-- D.1 Client booking request (assist tier) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-sm font-semibold text-slate-100">D.1 Client booking request (assist tier)</h3>
+            <p class="text-xs text-slate-400 mt-1">A TA gets a message: <em>"We need a 4-night stay at the Aman Tokyo for our anniversary, last week of October — suite with city view."</em></p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-slate-800">
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:20%">Field</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:45%">Value</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:35%">How populated</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800">
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">id</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">tsk_01HXY...</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System-generated</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">title</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Search: Aman Tokyo, suite, anniversary last week of Oct</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Auto-generated from message content</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_owner</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">TA on the trip</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Routing-assigned from trip ownership</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">watchers</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">—</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">None</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">status</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">In progress</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Lifecycle</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_context</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">trip:&lt;Anderson family Tokyo Oct 2026&gt;</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred from conversation thread</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">origin</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Client-driven (explicit)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">From §3.1</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">creator</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">AI message classifier</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Captured at creation</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">creation_surface</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Message bubble — inline suggestion</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Captured at creation</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">routing_tier</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Assist</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Default for Client-driven from §6.4</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">priority</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Normal</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Default; no urgency markers in message</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">due_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">—</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">None set</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">rationale</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Client message requested hotel booking with specific property + dates + room type.</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">AI</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">evidence_refs</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">[link to message]</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">AI</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">approval_state</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Approved (human)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">TA accepted the AI-proposed task</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_family</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">client_follow_up</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">subtype</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">direct_booking_request</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">created_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-05-12T09:43Z</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">updated_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-05-12T09:44Z</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- D.2 Weather-disruption alert (escalate tier) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-sm font-semibold text-slate-100">D.2 Weather-disruption alert (escalate tier)</h3>
+            <p class="text-xs text-slate-400 mt-1">Flight-tracking feed pushes an alert: typhoon warning for Seoul, client arriving in 48 hrs.</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-slate-800">
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:20%">Field</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:45%">Value</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:35%">How populated</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800">
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">id</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">tsk_01HXZ...</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">title</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Typhoon warning Seoul — client arrival in 48hr</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Auto-generated from signal</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_owner</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">TA on the trip</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Routing-assigned</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">watchers</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Ops manager</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Auto-added (escalate-tier policy)</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">status</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">In progress</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Lifecycle</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_context</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">trip:&lt;Wei Seoul May 2026&gt;</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred from active-trip query</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">origin</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">World-driven (disruption)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">From §3.2</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">creator</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">AI signal monitor</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Captured at creation</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">creation_surface</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Weather feed monitor</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Captured at creation</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">routing_tier</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Escalate</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Default for World-driven (disruption) from §6.4</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">priority</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">High</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Auto-bumped by time-to-departure proximity</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">due_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-05-14T06:00Z (T-24hr from arrival)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Derived from trip arrival timestamp</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">rationale</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Typhoon warning issued for Seoul; client arriving 2026-05-14. Operator should alert client and prepare reroute scenarios.</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">AI</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">evidence_refs</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">[weather feed alert], [trip itinerary]</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">AI</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">approval_state</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Auto-approved</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Above auto-approval threshold for World-driven disruptions</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_family</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">disruption_response</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">subtype</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">weather_disruption</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">created_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-05-12T11:02Z</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">updated_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-05-12T11:02Z</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- D.3 Pre-arrival checklist (auto tier) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-sm font-semibold text-slate-100">D.3 Pre-arrival checklist (auto tier)</h3>
+            <p class="text-xs text-slate-400 mt-1">Daily scheduled query finds a trip departing in 10 days.</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-slate-800">
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:20%">Field</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:45%">Value</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider" style="width:35%">How populated</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800">
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">id</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">tsk_01HY0...</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">title</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Pre-arrival prep: Anderson Tokyo trip T-10d</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Templated from trip name</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_owner</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Ops associate on the trip</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Routing-assigned</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">watchers</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">TA on the trip</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Auto-added per pre-arrival policy</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">status</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">In progress</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Lifecycle</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_context</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">trip:&lt;Anderson family Tokyo Oct 2026&gt;</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred from scheduled query result</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">origin</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Trip lifecycle (templated prep)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">From §3.3</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">creator</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">AI scheduled query</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Captured</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">creation_surface</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Scheduled query (daily, trips departing in N days)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Captured</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">routing_tier</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Auto</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Default for Trip lifecycle templated prep from §6.4</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">priority</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Normal</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Default; will auto-bump as date approaches</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">due_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-10-15T00:00Z (T-3d from departure)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Derived from trip departure</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">rationale</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Trip departing in 10 days — pre-arrival checklist auto-spawned.</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">AI (templated)</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">evidence_refs</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">[scheduled query run id], [trip record]</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">AI</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">approval_state</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Auto-approved</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Templated trip-lifecycle tasks auto-approved</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_family</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">trip_lifecycle_prep</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">subtype</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">pre_arrival_checklist_T-10</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Templated</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">created_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-10-05T00:01Z</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System (when the daily query ran)</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">updated_at</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">2026-10-05T00:01Z</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">System</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-5 mt-8">
+        <p class="text-sm font-semibold text-slate-200 mb-2">Reading the examples</p>
+        <ul class="space-y-2 text-xs text-slate-300">
+          <li><strong>D.1</strong> (Client-driven, Assist) — AI proposes, human approves; routing into the TA's task list. Most fields auto-filled from the message.</li>
+          <li><strong>D.2</strong> (World-driven disruption, Escalate) — AI auto-creates; the routing tier bumps watchers and priority. No human gate at creation.</li>
+          <li><strong>D.3</strong> (Trip lifecycle prep, Auto) — Pure templated. The scheduled query knows it's a pre-arrival task and fills almost everything.</li>
+        </ul>
+        <p class="text-xs text-slate-400 mt-3">In all three: the operator never types 19 fields. The system or upstream signal does almost all the work. Manual creation is the only case where humans see fields directly — and per the §7.2 constraint, even then it's just <code class="px-1 py-0.5 bg-slate-700 rounded text-slate-300 font-mono text-[10px]">title</code> + <code class="px-1 py-0.5 bg-slate-700 rounded text-slate-300 font-mono text-[10px]">owner</code>.</p>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
