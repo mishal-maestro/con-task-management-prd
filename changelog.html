@@ -45,6 +45,51 @@
 
       <div class="space-y-6">
 
+        <!-- Execution layer addendum v0.1 (2026-05-14) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-base font-semibold text-slate-100">Execution layer addendum v0.1 (2026-05-14) <span class="ml-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 border border-amber-500/40 rounded text-amber-300">DRAFT</span></h3>
+            <p class="text-xs text-slate-400 mt-1">Not signed off. Companion to v1.0 (which is the alignment-ready outline). Closes the post-approval execution gap surfaced in the May 14 Conductor squad standup.</p>
+          </div>
+          <div class="px-5 py-4">
+            <p class="text-xs text-slate-300 mb-4">Six new pages under the EXEC section nav prefix. All content drawn from the Conductor Task Execution Layer addendum (v0.1), which extends v1.0 with the trigger model, executor registry, execution result schema, state machine wiring, worked examples, and open questions for the execution layer.</p>
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">New page</span>
+                <span class="text-slate-300"><a href="execution-overview.html" class="text-orange-400 hover:text-orange-300">execution-overview.html</a> — Overview of the execution layer, why it exists, what v1.0 owns vs what this addendum owns, core definitions (trigger, action, executor, execution contract, execution attempt, reconciler sweep), the 5-element execution contract, agent layer boundary, and 5 reference patterns borrowed from external tools (Notion automations, GitHub Actions, Zapier, Temporal, Airflow).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">New page</span>
+                <span class="text-slate-300"><a href="execution-triggers.html" class="text-orange-400 hover:text-orange-300">execution-triggers.html</a> — Trigger model. Four trigger types (immediate, scheduled, on-event, manual-fire), each with backing implementation. v1 on-event trigger registry (6 events mapped to v1.0 streams with latency targets). Engineering call for event bus tech choice (Postgres LISTEN/NOTIFY recommendation for v1).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">New page</span>
+                <span class="text-slate-300"><a href="execution-executors.html" class="text-orange-400 hover:text-orange-300">execution-executors.html</a> — Action-to-executor binding via the executor registry (8-column versioned table). Five v1 executor types (message_send, message_compose, hotel_search, pre_arrival_template, human_routing) with input/output contracts, failure modes, and latency targets. Coverage check against v1.0 Appendix F (all 15 v1 task subtypes resolve to at least one executor). Phased rollout (v1/v2/v3).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">New page</span>
+                <span class="text-slate-300"><a href="execution-state.html" class="text-orange-400 hover:text-orange-300">execution-state.html</a> — Execution result schema (separate task_execution table with 11 columns), state machine diagram (approval to trigger resolution to executor start to terminal states), status transitions (9 execution events mapped to canonical status transitions), retry policy (none in v1, fail loudly), reconciler sweep (24-hour scan for orphans), edge cases and failure modes (11 cases).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">New page</span>
+                <span class="text-slate-300"><a href="execution-examples.html" class="text-orange-400 hover:text-orange-300">execution-examples.html</a> — Four worked execution examples mirroring v1.0 Appendix D structure. Each example shows the resolved execution contract (5 elements) and execution attempt rows (success path, plus failure path for the Aman Tokyo hotel search). Examples: Aman Tokyo hotel search, Seoul typhoon disruption, pre-arrival checklist, scheduled anniversary message (the Sunthar 00:15:50 use case from the standup).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">New page</span>
+                <span class="text-slate-300"><a href="execution-questions.html" class="text-orange-400 hover:text-orange-300">execution-questions.html</a> — 12 alignment-meeting questions for the execution layer. Covers execution result storage (separate table vs denormalised), retry policy per task_type, event bus tech, executor registry storage progression, pause-resume model for long-running tasks, cancellation cascading, how failures route to humans, sub-task spawn pattern, trigger event payload schemas, min acceptable result threshold, operator-facing executor visibility, composite executor failure-mode visibility.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Draft banner</span>
+                <span class="text-slate-300">Every new page shows an amber-bordered draft banner at the top: "Execution layer addendum · v0.1 draft proposal — Not signed off. Companion to v1.0 (which is the alignment-ready outline). Read v1.0 first; this addendum closes the post-approval execution gap."</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Nav + version</span>
+                <span class="text-slate-300">Added EXEC section to nav with 6 entries. Updated PAGE_DATA.version to "Interactive Outline · v1.0 + Execution v0.1 (draft)".</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <!-- System Overview page added (2026-05-13) -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
           <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">

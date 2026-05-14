@@ -18,10 +18,16 @@ const NAV_CONFIG = [
   { id: 'analogy-walkthroughs', section: 'App. E', label: 'Analogy Walkthroughs',    href: 'analogy-walkthroughs.html' },
   { id: 'task-types',           section: 'App. F', label: 'Task Types',              href: 'task-types.html' },
   { id: 'changelog',            section: 'Log',    label: 'Changelog',               href: 'changelog.html' },
+  { id: 'execution-overview',   section: 'EXEC',   label: 'Execution Overview',      href: 'execution-overview.html' },
+  { id: 'execution-triggers',   section: 'EXEC',   label: 'Triggers',                href: 'execution-triggers.html' },
+  { id: 'execution-executors',  section: 'EXEC',   label: 'Executors',               href: 'execution-executors.html' },
+  { id: 'execution-state',      section: 'EXEC',   label: 'State Machine',           href: 'execution-state.html' },
+  { id: 'execution-examples',   section: 'EXEC',   label: 'Execution Examples',      href: 'execution-examples.html' },
+  { id: 'execution-questions',  section: 'EXEC',   label: 'Open Questions (Exec)',   href: 'execution-questions.html' },
 ];
 
 const PAGE_DATA = {
   title: 'Conductor Task Management',
-  version: 'Interactive Outline · v1.0',
+  version: 'Interactive Outline · v1.0 + Execution v0.1 (draft)',
   notionUrl: 'https://www.notion.so/35fd1ecb2189816fbd68fbce0cac241a',
 };
