@@ -6,6 +6,45 @@ function initNav() {
 
   const currentPage = window.CURRENT_PAGE || 'index';
 
+  function renderLink(item, isSubItem) {
+    const active = currentPage === item.id;
+    const padding = isSubItem ? 'pl-10 pr-5' : 'px-5';
+    return `
+      <a href="${item.href}"
+         class="flex items-center gap-3 ${padding} py-2.5 text-sm transition-colors ${active
+           ? 'text-slate-100 bg-slate-800/50 border-l-2 border-orange-500'
+           : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 border-l-2 border-transparent'}">
+        <span class="font-mono text-[11px] text-slate-500 ${active ? 'text-orange-500' : ''} w-12 flex-shrink-0">${item.section || ''}</span>
+        <span>${item.label}</span>
+      </a>
+    `;
+  }
+
+  function renderGroup(group) {
+    const hasActive = group.items.some(item => item.id === currentPage);
+    const expanded = hasActive;
+    return `
+      <div class="nav-group" data-group-id="${group.id}">
+        <button type="button" class="nav-group-toggle flex items-center gap-3 w-full px-5 py-2.5 text-sm transition-colors border-l-2 border-transparent ${hasActive ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'}"
+                data-expanded="${expanded}">
+          <span class="font-mono text-[11px] text-slate-500 w-12 flex-shrink-0">${group.section || ''}</span>
+          <span class="flex-1 text-left">${group.label}</span>
+          <svg class="nav-chevron w-3 h-3 transition-transform ${expanded ? 'rotate-90' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+        <div class="nav-group-items ${expanded ? '' : 'hidden'}">
+          ${group.items.map(item => renderLink(item, true)).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  const navItemsHtml = NAV_CONFIG.map(entry => {
+    if (entry.type === 'group') return renderGroup(entry);
+    return renderLink(entry, false);
+  }).join('');
+
   const navHtml = `
     <aside id="sidebar" class="fixed left-0 top-0 h-full w-[260px] bg-slate-900 border-r border-slate-800 flex flex-col z-50 transition-transform duration-300 lg:translate-x-0 -translate-x-full">
       <!-- Header -->
@@ -16,19 +55,7 @@ function initNav() {
 
       <!-- Nav Links -->
       <nav class="flex-1 py-3 overflow-y-auto">
-        ${NAV_CONFIG.map(item => {
-          const active = currentPage === item.id;
-          const sectionLabel = item.section || '';
-          return `
-            <a href="${item.href}"
-               class="flex items-center gap-3 px-5 py-2.5 text-sm transition-colors ${active
-                 ? 'text-slate-100 bg-slate-800/50 border-l-2 border-orange-500'
-                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 border-l-2 border-transparent'}">
-              <span class="font-mono text-[11px] text-slate-500 ${active ? 'text-orange-500' : ''} w-12 flex-shrink-0">${sectionLabel}</span>
-              <span>${item.label}</span>
-            </a>
-          `;
-        }).join('')}
+        ${navItemsHtml}
       </nav>
 
       <!-- External Link -->
@@ -66,6 +93,24 @@ function initNav() {
       overlay.classList.add('hidden');
     });
   }
+
+  // Group toggle (collapsible Appendix and Execution sections)
+  document.querySelectorAll('.nav-group-toggle').forEach(t => {
+    t.addEventListener('click', () => {
+      const expanded = t.dataset.expanded === 'true';
+      const newExpanded = !expanded;
+      t.dataset.expanded = String(newExpanded);
+      const items = t.nextElementSibling;
+      const chevron = t.querySelector('.nav-chevron');
+      if (newExpanded) {
+        items.classList.remove('hidden');
+        chevron.classList.add('rotate-90');
+      } else {
+        items.classList.add('hidden');
+        chevron.classList.remove('rotate-90');
+      }
+    });
+  });
 }
 
 // Auto-init when DOM ready
