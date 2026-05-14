@@ -91,6 +91,7 @@
                   <li><strong class="text-amber-400">v1 (launch):</strong> every suggestion requires human review. The operator reviews (sees the rationale + evidence per §7.4), can edit any field, then approves or rejects. The <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">confidence_score</code> is captured from day 1 for telemetry / calibration only — to learn where the auto-approval threshold should live per task type.</li>
                   <li><strong class="text-amber-400">v2 (post-calibration):</strong> auto-approve above a confidence threshold (e.g. ~90%) per origin / task type. Below threshold still routes to human review. Threshold is product-tunable per type once telemetry supports the cut-over.</li>
                 </ul>
+                <p class="text-[11px] text-slate-500 italic mt-2 leading-relaxed">Distinct from the <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">auto</code> routing tier in <a href="routing.html" class="text-orange-400 hover:text-orange-300">§6.1</a> — that one describes post-canonical execution, not the creation gate. Auto-tier tasks (e.g. trip-prep templated checklists) still need a human approval click at creation in v1.</p>
               </div>
             </div>
             <div class="flex gap-3">
