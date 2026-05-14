@@ -45,6 +45,54 @@
 
       <div class="space-y-6">
 
+        <!-- System Overview page added (2026-05-13) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-base font-semibold text-slate-100">System Overview page added (2026-05-13)</h3>
+            <p class="text-xs text-slate-400 mt-1">New companion page for big-picture viewing — shows the full task pipeline as 5 stacked layers with click-to-expand cards.</p>
+          </div>
+          <div class="px-5 py-4">
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">New page</span>
+                <span class="text-slate-300"><a href="system-overview.html" class="text-orange-400 hover:text-orange-300">system-overview.html</a> — single-page big-picture view stacking the 5 dimensions of the task pipeline (Origin → Stream type → 4-stage creation flow → Routing tier → Closure). Each card on each layer is click-to-expand and reveals 2-3 concrete examples + a link to the relevant section of the doc.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Cross-cutting</span>
+                <span class="text-slate-300">Manual bypass and Agent-mode hybrid called out in a "Cross-cutting paths" section at the bottom — those don't follow the happy path but are central to the model.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Color-coded</span>
+                <span class="text-slate-300">Origin colors match the badges added to the Master Creation Swimlane (Client-driven blue, World-driven red, Trip lifecycle green, Relationship purple, Internal ops slate). Routing tier colors match §6 (auto green, assist amber, escalate red). Closure colors match §7.3.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Nav</span>
+                <span class="text-slate-300">Added below Changelog in the side nav, section label "Map".</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Master Creation Swimlane annotations (2026-05-13) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-base font-semibold text-slate-100">Master Creation Swimlane — origin + stream-type annotations (2026-05-13)</h3>
+            <p class="text-xs text-slate-400 mt-1">Adds two missing dimensions to the existing BPMN without restructuring the lanes.</p>
+          </div>
+          <div class="px-5 py-4">
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Origin badges</span>
+                <span class="text-slate-300">(creation-flow.html) Each of the 5 signal sources gets a colored pill below its label showing the §3 origin bucket it maps to. Client message → Client-driven (blue), External signal → World-driven (red), Trip / state change → Trip lifecycle (green), Ops prompts agent → Any bucket / agent mode (purple), Ops spots something → Any bucket / manual (slate).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Stream-type</span>
+                <span class="text-slate-300">(creation-flow.html) Top-of-Signals-lane note clarifying all shown signals are event-driven (push); Schedule-driven side fires from timers — see "Scheduled query" subtitle "Schedule-driven (§5, timer-fired)" in the AI processing lane.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <!-- v1.0 schema hardening (2026-05-13) -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
           <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">

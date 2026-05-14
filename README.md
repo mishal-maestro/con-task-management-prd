@@ -6,7 +6,7 @@ This is an **outline** — a territory map for the alignment meeting. Not a lock
 
 ## Structure
 
-16 navigable pages:
+17 navigable pages:
 - `index.html` — Overview: executive summary, reading guide, stat cards, problem statement, three-jobs cards, reference patterns
 - `definitions.html` — Vocabulary (14 terms in a 3-column grid)
 - `origins.html` — 5 origin buckets, with §3.1a Explicit / §3.1b Behavioural split for Client-driven
@@ -22,7 +22,8 @@ This is an **outline** — a territory map for the alignment meeting. Not a lock
 - `example-records.html` — 3 worked task records with all 23 canonical fields populated (Appendix D)
 - `analogy-walkthroughs.html` — 3 end-to-end walkthroughs (PR-review pattern, Incident pattern, multi-signal correlation) (Appendix E)
 - `task-types.html` — 9 task_type categories phased v1/v2/v3 + Surface rollout summary (Appendix F)
-- `changelog.html` — Version history (v0.2 + v1.0 entries)
+- `changelog.html` — Version history (v0.2 + v1.0 + v1.0 schema-hardening entries)
+- `system-overview.html` — Single-page big-picture view of the full task pipeline (origin → stream → 4-stage flow → routing → closure) with click-to-expand cards showing concrete examples per layer
 
 ## BPMN diagrams
 

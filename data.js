@@ -17,6 +17,7 @@ const NAV_CONFIG = [
   { id: 'analogy-walkthroughs', section: 'App. E', label: 'Analogy Walkthroughs',    href: 'analogy-walkthroughs.html' },
   { id: 'task-types',           section: 'App. F', label: 'Task Types',              href: 'task-types.html' },
   { id: 'changelog',            section: 'Log',    label: 'Changelog',               href: 'changelog.html' },
+  { id: 'system-overview',      section: 'Map',    label: 'System Overview',         href: 'system-overview.html' },
 ];
 
 const PAGE_DATA = {
