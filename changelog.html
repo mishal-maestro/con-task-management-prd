@@ -45,6 +45,50 @@
 
       <div class="space-y-6">
 
+        <!-- v1.0 schema hardening (2026-05-13) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-base font-semibold text-slate-100">v1.0 schema hardening (2026-05-13)</h3>
+            <p class="text-xs text-slate-400 mt-1">Post-v1.0 schema gap audit applied in-place to v1.0 (no version bump). Adds enumerations and new fields to close out the data model before engineering writes specs.</p>
+          </div>
+          <div class="px-5 py-4">
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">status enum</span>
+                <span class="text-slate-300"><code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">status</code> field enumerated: <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">pending</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">in_progress</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">blocked</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">snoozed</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">done</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">dismissed</code>. Reopen of a closed task transitions back to <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">in_progress</code> (with <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">reopen_count</code> + <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">last_reopened_at</code> updated); reopen does not get its own status.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">priority enum</span>
+                <span class="text-slate-300"><code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">priority</code> enumerated: <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">High</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Normal</code> / <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Low</code>, default <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Normal</code>. Auto-bump rules deferred to §8 q13.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">filter rename</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> Stale <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">source</code> filter renamed <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">creation_surface</code> to match the actual schema field. <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">source</code> wasn't a real field.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">+6 fields</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> Six new schema fields: <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">snooze_until</code> (pairs with <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">snoozed</code> status), <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">dismissal_reason</code> (audit-required when status → dismissed), <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">reopen_count</code> + <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">last_reopened_at</code> (close out §8 q10 audit + recovery), <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">parent_task_id</code> + <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">agent_run_id</code> (link agent-mode sub-tasks back to the agent run). Schema grows 23 → 29 fields.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">activity log</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> Activity log specified as a separate entity: per-task append-only log capturing every state transition with timestamp / actor / event type / before-after values. Engineering: separate table with FK to task; not denormalised onto the canonical record.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">conf. threshold</span>
+                <span class="text-slate-300"><strong>(§7.1 Stage 3)</strong> Confidence threshold storage specified: per-(origin × task_type) tunable config table; default 0.90 across the matrix, calibrated downward over time as operator-acceptance signals accumulate.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">agent linkage</span>
+                <span class="text-slate-300"><strong>(§7.1 agent mode)</strong> Schema linkage specified: AI sub-tasks carry both <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">parent_task_id</code> and <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">agent_run_id</code>; human sub-tasks carry <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">agent_run_id</code> only.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">App. D update</span>
+                <span class="text-slate-300"><strong>(Example records)</strong> Six new fields added to D.1 / D.2 / D.3 worked records (all empty / default — none of the three example scenarios exercise snooze / dismissal / reopen / agent-mode).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <!-- v1.0 -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
           <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
