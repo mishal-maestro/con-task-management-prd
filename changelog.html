@@ -31,7 +31,7 @@
     <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
 
       <div class="mb-6">
-        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
+        <a href="https://www.notion.so/35fd1ecb2189816fbd68fbce0cac241a" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -44,6 +44,70 @@
       </div>
 
       <div class="space-y-6">
+
+        <!-- v1.0 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+          <div class="px-5 py-3 bg-slate-800/50 border-b border-slate-800">
+            <h3 class="text-base font-semibold text-slate-100">v1.0 (2026-05-13) — applying call feedback from the v0.2 PM review</h3>
+            <p class="text-xs text-slate-400 mt-1">Changes from v0.2, applied after the post-v0.2 review call with the Conductor PM. v1.0 is alignment-ready for the wider review with TA leads, Platform PO, and Conductor co-owners.</p>
+          </div>
+          <div class="px-5 py-4">
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Exec</span>
+                <span class="text-slate-300"><strong>Executive summary</strong> added at top of doc. Narrative form (Amazon-style), about one page, covers problem statement, 4-stage flow, five origin buckets, routing tiers, task-type-driven rendering, open questions, and what-this-doc-is-not. Designed to make the alignment review decidable in 2 minutes if the reader doesn't want to dig deeper.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">v1/v2 gate</span>
+                <span class="text-slate-300"><strong>(§7.1 Stage 3)</strong> Approval gate phased evolution rewritten. v1 (launch): every suggestion goes through human review; <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">confidence_score</code> captured from day 1 for telemetry / calibration only. v2 (post-calibration): auto-approve above a threshold (e.g. ~90%) per task type. Avoids the v1 failure mode the ops team called out previously (AI-spammed tasks they didn't ask for).</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Surface flip</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> Surface model flipped — in-context approval is now the primary flow (inline Claude-style "yes, yes, yes" approval within messaging, trip pages, agent runs, and member pages); the Review queue is the catch-up surface for what wasn't acted on in context. v0.2 had the Review queue framed as the primary surface.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">+4 fields</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> Four new canonical task fields: <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">action</code> (verb-phrase), <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">actor</code> (who or what executes), <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">when</code> (execution timing), and <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">confidence_score</code> (AI certainty 0-1, drives v1 telemetry + v2 auto-approval gating). Schema grows 19 → 23 fields. Appendix D worked records updated with the new fields populated.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">task_type</span>
+                <span class="text-slate-300"><strong>(§7.2)</strong> <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">task_family</code> renamed to <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">task_type</code> and elevated from "to be defined in the PRD" placeholder to a load-bearing concept. Type drives (a) where the task surfaces in the UI and (b) which fields are visible per surface.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Appendix F</span>
+                <span class="text-slate-300"><strong>(new)</strong> Task types and rollout phases. Nine <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">task_type</code> categories phased into v1 / v2 / v3: v1 covers messaging, booking-action, trip-prep, and disruption-response; v2 covers member-context, ops-internal, and agent-subtask; v3 covers compliance-safety and discovery. Each row has example subtypes + where it surfaces + origin-bucket cross-references. Plus a Surface rollout summary aggregating surfaces per phase.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">AI replies</span>
+                <span class="text-slate-300"><strong>(§7.1)</strong> AI-suggested replies are tasks — explicit callout added. AI-proposed message replies travel the same 4-stage flow with one-click inline approval; canonical task created and auto-closed in the same step. Audit trail (who approved sending which message) preserved in one canonical record.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">§8 trim</span>
+                <span class="text-slate-300"><strong>(18 → 15)</strong> Merged three pairs of overlapping questions: VVIP bypass + VVIP detection (was q9 + q17) became one VVIP policy question; closure-confidence model + per-origin closure mapping (was q5 + q13) became one closure model question; soft-closed audit state + reopen loop (was q10 + q14) became one closure audit + recovery question.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">q6 reframe</span>
+                <span class="text-slate-300"><strong>(§8 q6)</strong> Was "Default views: ops associate vs TA"; now "Default filters and sort orders per role" anchored to owner + watchers ownership model. Removes the implication that we need separate per-role dashboard products.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">§6.5 compress</span>
+                <span class="text-slate-300"><strong>(routing)</strong> PR-review vs Incident analogy compressed from 5 paragraphs to 4 sentences; depth pushed to Appendix E walkthroughs.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">E.2 fix</span>
+                <span class="text-slate-300"><strong>(Appendix E.2)</strong> Weather walkthrough Stage 3 now shows v1 (pending review at incident-triage speed) alongside v2 (auto-approve above threshold). Previously read "auto-approval... no human gate at creation," which contradicted §7.1.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Reading guide</span>
+                <span class="text-slate-300"><strong>(top of doc)</strong> Added a Reading guide block: exec summary (2 min); §3 + §7 for depth; §8 for decisions; appendices for reference.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 font-mono text-orange-400">Companion v1.0</span>
+                <span class="text-slate-300"><strong>(this site)</strong> Companion app rebuilt from v0.2 to v1.0 in parallel: vocabulary + schema brought in line, BPMN updated for the 4-stage flow with v1/v2 phased approval, new Appendix F page, exec summary + reading guide on Overview. Notion v1.0 page remains the primary review surface.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <!-- v0.2 -->
         <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">

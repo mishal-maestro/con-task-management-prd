@@ -31,7 +31,7 @@
     <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
 
       <div class="mb-6">
-        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
+        <a href="https://www.notion.so/35fd1ecb2189816fbd68fbce0cac241a" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -72,6 +72,21 @@
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">title</td>
                   <td class="px-5 py-3 text-xs text-slate-300">Search: Aman Tokyo, suite, anniversary last week of Oct</td>
                   <td class="px-5 py-3 text-xs text-slate-400">Auto-generated from message content</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">action</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Search hotels matching property + dates + suite type; return options to TA for review</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred from message intent</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">actor</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">TA (with AI search assistance)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Captured at creation</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">when</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">immediately</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Default for Client-driven Assist</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_owner</td>
@@ -135,11 +150,16 @@
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">approval_state</td>
-                  <td class="px-5 py-3 text-xs text-slate-300">Approved (human)</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">human-approved</td>
                   <td class="px-5 py-3 text-xs text-slate-400">TA accepted the AI-proposed task</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
-                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_family</td>
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">confidence_score</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">0.92</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">High — message specific, no ambiguity</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_type</td>
                   <td class="px-5 py-3 text-xs text-slate-300">client_follow_up</td>
                   <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
                 </tr>
@@ -188,6 +208,21 @@
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">title</td>
                   <td class="px-5 py-3 text-xs text-slate-300">Typhoon warning Seoul — client arrival in 48hr</td>
                   <td class="px-5 py-3 text-xs text-slate-400">Auto-generated from signal</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">action</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Alert client of typhoon warning + prepare reroute scenarios</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Inferred from signal + active trip</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">actor</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">TA on the trip (with AI for reroute option generation)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Routing-assigned</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">when</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">immediately</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Time-sensitive disruption</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_owner</td>
@@ -251,11 +286,16 @@
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">approval_state</td>
-                  <td class="px-5 py-3 text-xs text-slate-300">Auto-approved</td>
-                  <td class="px-5 py-3 text-xs text-slate-400">Above auto-approval threshold for World-driven disruptions</td>
+                  <td class="px-5 py-3 text-xs text-slate-300"><strong class="text-amber-400">v1:</strong> pending-review (every suggestion goes to human review). <strong class="text-amber-400">v2:</strong> auto-approved for high-confidence disruptions</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">See §7.1 Stage 3</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
-                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_family</td>
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">confidence_score</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">0.97</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">High — reliable weather feed, real active trip, clear time pressure</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_type</td>
                   <td class="px-5 py-3 text-xs text-slate-300">disruption_response</td>
                   <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
                 </tr>
@@ -304,6 +344,21 @@
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">title</td>
                   <td class="px-5 py-3 text-xs text-slate-300">Pre-arrival prep: Anderson Tokyo trip T-10d</td>
                   <td class="px-5 py-3 text-xs text-slate-400">Templated from trip name</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">action</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Re-confirm transfers; brief restaurants on dietary notes; send weather + packing notes to client</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Templated from pre-arrival policy</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">actor</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">Ops associate (with AI for templated communications)</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Routing-assigned</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">when</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">scheduled:T-10d-from-departure</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">Derived from trip-lifecycle rule</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">primary_owner</td>
@@ -367,11 +422,16 @@
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-3 text-xs font-mono text-slate-300">approval_state</td>
-                  <td class="px-5 py-3 text-xs text-slate-300">Auto-approved</td>
-                  <td class="px-5 py-3 text-xs text-slate-400">Templated trip-lifecycle tasks auto-approved</td>
+                  <td class="px-5 py-3 text-xs text-slate-300"><strong class="text-amber-400">v1:</strong> pending-review (templated trip-prep tasks still go to human review at launch). <strong class="text-amber-400">v2:</strong> auto-approved for high-confidence templates</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">See §7.1 Stage 3</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
-                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_family</td>
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">confidence_score</td>
+                  <td class="px-5 py-3 text-xs text-slate-300">0.99</td>
+                  <td class="px-5 py-3 text-xs text-slate-400">High — pure templated query, clear active trip, well-known pattern</td>
+                </tr>
+                <tr class="hover:bg-slate-800/20 transition-colors">
+                  <td class="px-5 py-3 text-xs font-mono text-slate-300">task_type</td>
                   <td class="px-5 py-3 text-xs text-slate-300">trip_lifecycle_prep</td>
                   <td class="px-5 py-3 text-xs text-slate-400">Inferred</td>
                 </tr>
@@ -401,10 +461,10 @@
         <p class="text-sm font-semibold text-slate-200 mb-2">Reading the examples</p>
         <ul class="space-y-2 text-xs text-slate-300">
           <li><strong>D.1</strong> (Client-driven, Assist) — AI proposes, human approves; routing into the TA's task list. Most fields auto-filled from the message.</li>
-          <li><strong>D.2</strong> (World-driven disruption, Escalate) — AI auto-creates; the routing tier bumps watchers and priority. No human gate at creation.</li>
+          <li><strong>D.2</strong> (World-driven disruption, Escalate) — AI auto-creates the suggestion; the routing tier bumps watchers and priority. Human gate behaviour is phased — v1 always routes to human review for fast triage; v2 auto-approves above the confidence threshold.</li>
           <li><strong>D.3</strong> (Trip lifecycle prep, Auto) — Pure templated. The scheduled query knows it's a pre-arrival task and fills almost everything.</li>
         </ul>
-        <p class="text-xs text-slate-400 mt-3">In all three: the operator never types 19 fields. The system or upstream signal does almost all the work. Manual creation is the only case where humans see fields directly — and per the §7.2 constraint, even then it's just <code class="px-1 py-0.5 bg-slate-700 rounded text-slate-300 font-mono text-[10px]">title</code> + <code class="px-1 py-0.5 bg-slate-700 rounded text-slate-300 font-mono text-[10px]">owner</code>.</p>
+        <p class="text-xs text-slate-400 mt-3">In all three: the operator never types 23 fields. The system or upstream signal does almost all the work. Manual creation is the only case where humans see fields directly — and per the §7.2 constraint, even then it's just <code class="px-1 py-0.5 bg-slate-700 rounded text-slate-300 font-mono text-[10px]">title</code> + <code class="px-1 py-0.5 bg-slate-700 rounded text-slate-300 font-mono text-[10px]">owner</code>.</p>
       </div>
 
     </div>

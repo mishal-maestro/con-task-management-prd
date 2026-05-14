@@ -38,7 +38,7 @@
 
       <!-- Source link chip -->
       <div class="mb-6">
-        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
+        <a href="https://www.notion.so/35fd1ecb2189816fbd68fbce0cac241a" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -46,9 +46,22 @@
       </div>
 
       <!-- Page title -->
-      <div class="mb-8">
+      <div class="mb-6">
         <h2 class="text-2xl font-semibold text-slate-100 tracking-tight">Overview</h2>
-        <p class="text-sm text-slate-500 mt-1">Conductor Task Creation & Management — v0.2 draft (applying PM feedback)</p>
+        <p class="text-sm text-slate-500 mt-1">Conductor Task Creation & Management — v1.0</p>
+      </div>
+
+      <!-- Executive summary -->
+      <div class="bg-orange-500/5 border border-orange-500/30 rounded-lg p-5 mb-4">
+        <div class="text-xs font-semibold text-orange-400 mb-2 uppercase tracking-wider">Executive summary</div>
+        <p class="text-sm text-slate-300 leading-relaxed mb-3">Maestro's task layer <strong class="text-slate-100">detects</strong> the dozens of small jobs behind a perfect trip, <strong class="text-slate-100">routes</strong> each to the cheapest competent worker (AI or human), and <strong class="text-slate-100">closes</strong> them. v1 ships with human approval on every AI-suggested task; v2 graduates to auto-approval above a calibrated confidence threshold per task type.</p>
+        <p class="text-sm text-slate-300 leading-relaxed">Every task moves through a 4-stage flow: <strong class="text-slate-100">Signal</strong> (raw event) → <strong class="text-slate-100">Suggestion</strong> (system's proposal) → <strong class="text-slate-100">Approval gate</strong> (human in v1; auto above threshold in v2) → <strong class="text-slate-100">Canonical task</strong>. Every task answers a "why" via one of five origin buckets (Client-driven, World-driven, Trip lifecycle, Relationship, Internal ops) and executes via one of three routing tiers (auto, assist, escalate). The unit economics depend on this layer working — one TA should run the trip volume that today takes a small ops team.</p>
+      </div>
+
+      <!-- Reading guide -->
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 mb-8">
+        <div class="text-xs font-semibold text-slate-200 mb-1.5 uppercase tracking-wider">Reading guide</div>
+        <p class="text-xs text-slate-400 leading-relaxed">Start with the executive summary above (2 minutes). For depth: <a href="origins.html" class="text-orange-400 hover:text-orange-300">§3 origin taxonomy</a> and <a href="lifecycle.html" class="text-orange-400 hover:text-orange-300">§7 lifecycle</a>. For the decisions the alignment meeting needs to make: <a href="open-questions.html" class="text-orange-400 hover:text-orange-300">§8 (15 open questions)</a>. Appendices <a href="creation-flow.html" class="text-orange-400 hover:text-orange-300">A</a>, <a href="task-inventory.html" class="text-orange-400 hover:text-orange-300">B</a>, <a href="stream-direction.html" class="text-orange-400 hover:text-orange-300">C</a>, <a href="example-records.html" class="text-orange-400 hover:text-orange-300">D</a>, <a href="analogy-walkthroughs.html" class="text-orange-400 hover:text-orange-300">E</a>, <a href="task-types.html" class="text-orange-400 hover:text-orange-300">F</a> are reference material for engineering and design.</p>
       </div>
 
       <!-- Stat cards (clickable -> related page) -->
@@ -67,10 +80,10 @@
         </a>
         <a href="lifecycle.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
           <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">4</div>
-          <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">Lifecycle Stages</div>
+          <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">Creation Stages</div>
         </a>
         <a href="open-questions.html" class="block bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-orange-500 hover:bg-slate-800/50 transition-all cursor-pointer group">
-          <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">18</div>
+          <div class="font-mono text-2xl font-semibold text-slate-100 leading-tight group-hover:text-orange-400 transition-colors">15</div>
           <div class="text-xs text-slate-500 mt-1.5 uppercase tracking-wider font-medium">Open Questions</div>
         </a>
       </div>

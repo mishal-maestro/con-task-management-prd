@@ -31,7 +31,7 @@
     <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
 
       <div class="mb-6">
-        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
+        <a href="https://www.notion.so/35fd1ecb2189816fbd68fbce0cac241a" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -106,8 +106,8 @@
               <span class="font-mono text-sm font-bold text-orange-400">5</span>
             </div>
             <div class="flex-1">
-              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Closure-confidence model</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">Same auto/assist/escalate tier model as creation, or separate? E.g. an <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">assist</code>-tier task might still auto-close — or always require human ACK on closure regardless of creation tier.</p>
+              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Closure model and per-origin mapping</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">(a) Same <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">auto</code>/<code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">assist</code>/<code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">escalate</code> tier model as creation, or separate? E.g. an <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">assist</code>-tier task might still auto-close, or always require human ACK regardless of creation tier. (b) Per origin bucket, what's the default closure path (manual completion / AI auto-close / AI-proposed close / manual dismissal)? Trip-lifecycle templated comms could auto-close on confirmation; Relationship-bucket tasks should require human ACK on closure regardless of creation tier. Default mapping to confirm at alignment meeting.</p>
             </div>
           </div>
         </div>
@@ -118,8 +118,8 @@
               <span class="font-mono text-sm font-bold text-orange-400">6</span>
             </div>
             <div class="flex-1">
-              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Default views: ops associate vs TA</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">What's on a TA's morning Tasks dashboard? An ops associate's? Different roles, different rituals — drives onboarding and product feel.</p>
+              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Default filters and sort orders per role</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">Tasks live on the shared task board (§7.2), visible to owners and watchers, not separate per-role dashboards. The open call: what default filters or sort orders do TAs vs ops associates apply, and which presets should we ship out of the box? Drives onboarding and the feel of the shared view without spawning role-specific dashboard products.</p>
             </div>
           </div>
         </div>
@@ -154,8 +154,8 @@
               <span class="font-mono text-sm font-bold text-orange-400">9</span>
             </div>
             <div class="flex-1">
-              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">VVIP / high-stakes bypass</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">Should there be a global rule: any task tied to a VVIP client or a > $X booking auto-escalates regardless of bucket?</p>
+              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">VVIP policy and detection</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">(a) What counts as VVIP — client profile flag, account tier, trip value above threshold, or some combination? (b) Once defined, does VVIP status auto-escalate every task tied to that client (or trip above $X) regardless of bucket, or apply specific bypass rules per origin? Both parts affect whether the escalation policy is implementable.</p>
             </div>
           </div>
         </div>
@@ -166,8 +166,8 @@
               <span class="font-mono text-sm font-bold text-orange-400">10</span>
             </div>
             <div class="flex-1">
-              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Audit + undo bar</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">Closure is sometimes wrong. Beyond a <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Reopen</code> button, do we need a "soft-closed" intermediate state for high-stakes tasks? Trade-off: cleaner UI vs. recoverability.</p>
+              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Closure audit and recovery</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">(a) Beyond a <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">Reopen</code> button, do we need a "soft-closed" intermediate state for high-stakes tasks (VVIP, large bookings)? Trade-off: cleaner UI vs. recoverability. (b) When AI auto-closes a task and an operator reopens it, what does the system do next cycle? Learn (skip re-firing under similar conditions), re-propose closure (forcing operator review), or escalate (mark the task as suspect)?</p>
             </div>
           </div>
         </div>
@@ -202,30 +202,6 @@
               <span class="font-mono text-sm font-bold text-orange-400">13</span>
             </div>
             <div class="flex-1">
-              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Closure-tier mapping per origin bucket</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">§7.3 lists 4 closure paths (manual completion, AI auto-close, AI-proposed close, manual dismissal). Which origin buckets default to which? Trip-lifecycle templated comms could auto-close on confirmation arrival; Relationship-bucket tasks should require human ACK on closure regardless of creation tier. Default mapping to confirm at alignment meeting.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
-          <div class="flex gap-3">
-            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
-              <span class="font-mono text-sm font-bold text-orange-400">14</span>
-            </div>
-            <div class="flex-1">
-              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">AI/human conflict resolution on closure</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">If AI auto-closes a task and an operator reopens it, what does the system do next cycle? Learn (skip re-firing under similar conditions), re-propose closure (forcing operator review), or escalate (mark the task as suspect)? Loop unspecified in §7.3.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
-          <div class="flex gap-3">
-            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
-              <span class="font-mono text-sm font-bold text-orange-400">15</span>
-            </div>
-            <div class="flex-1">
               <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Priority assignment rule</h3>
               <p class="text-xs text-slate-400 leading-relaxed">§7.2 lists priority as a filter and the canonical fields block includes <code class="px-1 py-0.5 bg-slate-800 rounded text-slate-300 font-mono text-[10px]">priority</code>, but the outline doesn't say how priority is assigned. Manual? Urgency-derived (T-2 vs T-10 days)? VVIP-weighted? Origin-default with overrides? Affects whether operators trust the priority column.</p>
             </div>
@@ -235,7 +211,7 @@
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
           <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
-              <span class="font-mono text-sm font-bold text-orange-400">16</span>
+              <span class="font-mono text-sm font-bold text-orange-400">14</span>
             </div>
             <div class="flex-1">
               <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Workload-balancing enforcement</h3>
@@ -247,19 +223,7 @@
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
           <div class="flex gap-3">
             <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
-              <span class="font-mono text-sm font-bold text-orange-400">17</span>
-            </div>
-            <div class="flex-1">
-              <h3 class="text-sm font-semibold text-slate-100 mb-1.5">VVIP detection rule</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">§8 question 9 asks whether VVIP clients auto-escalate, but the outline never defines what counts as VVIP. Client profile flag, account tier, trip value above threshold, all three? Affects whether the auto-escalation policy is implementable.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
-          <div class="flex gap-3">
-            <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
-              <span class="font-mono text-sm font-bold text-orange-400">18</span>
+              <span class="font-mono text-sm font-bold text-orange-400">15</span>
             </div>
             <div class="flex-1">
               <h3 class="text-sm font-semibold text-slate-100 mb-1.5">Internal-surface signal sources</h3>

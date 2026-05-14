@@ -31,7 +31,7 @@
     <div class="max-w-[1280px] mx-auto px-6 py-8 pt-14 lg:pt-8">
 
       <div class="mb-6">
-        <a href="https://www.notion.so/35ed1ecb218981e5b087d3c650711444" target="_blank"
+        <a href="https://www.notion.so/35fd1ecb2189816fbd68fbce0cac241a" target="_blank"
            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 hover:border-slate-700 transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           Notion outline (source of truth)
@@ -121,11 +121,11 @@
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-4 text-sm font-semibold text-slate-200">3. Approval gate</td>
-                  <td class="px-5 py-4 text-xs text-slate-300 leading-relaxed">Auto-approval. Escalate-tier disruptions above the confidence threshold bypass human review — the alert is reliable, the trip is real, the time-pressure is high. No human gate at creation.</td>
+                  <td class="px-5 py-4 text-xs text-slate-300 leading-relaxed"><strong class="text-amber-400">In v1: pending review.</strong> Every suggestion goes to human review per §7.1 Stage 3, but the framing is "acknowledge an incident" (TA or ops manager ACKs in seconds), not "review a draft." Escalate-tier signals fire priority alerts to ensure fast ACK. <strong class="text-amber-400">Post-calibration v2: auto-approve above the confidence threshold</strong> for high-confidence Escalate-tier disruptions, because the alert is reliable, the trip is real, and the time-pressure is high.</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-4 text-sm font-semibold text-slate-200">4. Canonical task</td>
-                  <td class="px-5 py-4 text-xs text-slate-300 leading-relaxed">Suggestion immediately becomes a Canonical task (D.2 in Appendix D). Primary owner: TA on the trip. Watchers: ops manager (auto-added by Escalate policy). Priority: High (auto-bumped).</td>
+                  <td class="px-5 py-4 text-xs text-slate-300 leading-relaxed">Once acknowledged (v1) or auto-approved (v2), the Suggestion becomes a Canonical task (D.2 in Appendix D). Primary owner: TA on the trip. Watchers: ops manager (auto-added by Escalate policy). Priority: High (auto-bumped).</td>
                 </tr>
                 <tr class="hover:bg-slate-800/20 transition-colors">
                   <td class="px-5 py-4 text-sm font-semibold text-slate-200">Closure</td>
@@ -135,7 +135,7 @@
             </table>
           </div>
           <div class="px-5 py-4 bg-orange-500/10 border-t border-slate-800">
-            <p class="text-xs text-slate-300 leading-relaxed"><strong>What makes this Incident-shaped.</strong> No human at creation — the system created and routed without asking. Watchers were auto-added per escalation policy. Priority was auto-bumped by time-to-departure proximity. If a follow-up weather signal fires (warning escalates to "imminent landfall"), the system updates the <em>same</em> canonical task rather than creating a new one — see E.3 for the correlation case.</p>
+            <p class="text-xs text-slate-300 leading-relaxed"><strong>What makes this Incident-shaped.</strong> Speed of triage, not deliberation. In v1 a human still ACKs at the gate, but the operator's action is "acknowledge an alert," not "review a draft response," measured in seconds rather than minutes. Post-calibration v2 above the confidence threshold, the system creates and routes without asking. Watchers were auto-added per escalation policy. Priority was auto-bumped by time-to-departure proximity. If a follow-up weather signal fires (warning escalates to "imminent landfall"), the system updates the <em>same</em> canonical task rather than creating a new one — see E.3 for the correlation case.</p>
           </div>
         </div>
 
